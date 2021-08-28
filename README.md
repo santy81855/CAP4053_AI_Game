@@ -2,4 +2,4 @@
 
 Group Members:
 Santiago Garcia
-Joel Shaw
+, Joel Shaw
