@@ -8,7 +8,6 @@ public class CannonController : MonoBehaviour
     public int speed;
     public float friction;
     public float lerpSpeed;
-    public float firePower;
     float xDegrees;
     float yDegrees;
     Quaternion fromRotation;
@@ -20,11 +19,16 @@ public class CannonController : MonoBehaviour
     Rigidbody cannonballRB;
     public Transform shotPos;
     public GameObject explosion;
+    public float firePower;
+    public int powerMultiplier = 100;
     // Start is called before the first frame update
     //
+
+
     void Start()
     {
         camera = Camera.main;
+        firePower *= powerMultiplier;
     }
 
     // Update is called once per frame
@@ -42,7 +46,7 @@ public class CannonController : MonoBehaviour
                     xDegrees -= Input.GetAxis("Mouse Y") * speed * friction;
                     yDegrees += Input.GetAxis("Mouse X") * speed * friction;
                     fromRotation = transform.rotation;
-                    toRotation = Quaternion.Euler(0, yDegrees, xDegrees);
+                    toRotation = Quaternion.Euler(xDegrees, yDegrees, 0);
                     transform.rotation = Quaternion.Lerp(fromRotation, toRotation, Time.deltaTime * lerpSpeed);
                 }
             }
@@ -55,7 +59,7 @@ public class CannonController : MonoBehaviour
 
     public void FireCannon()
     {
-        firePower *= 2000;
+        
         GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation) as GameObject;
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
