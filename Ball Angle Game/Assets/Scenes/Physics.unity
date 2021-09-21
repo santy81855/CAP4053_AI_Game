@@ -398,9 +398,9 @@ BoxCollider:
   m_GameObject: {fileID: 822031131}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 2, z: 2}
+  m_Size: {x: 5, y: 5, z: 2}
   m_Center: {x: 0, y: 0.31700844, z: -0.11360401}
 --- !u!23 &822031133
 MeshRenderer:

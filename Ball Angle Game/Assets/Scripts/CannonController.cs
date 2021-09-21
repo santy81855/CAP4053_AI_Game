@@ -29,6 +29,8 @@ public class CannonController : MonoBehaviour
     {
         camera = Camera.main;
         firePower *= powerMultiplier;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
@@ -37,21 +39,19 @@ public class CannonController : MonoBehaviour
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.transform.gameObject.tag == "Cannon")
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    xDegrees -= Input.GetAxis("Mouse Y") * speed * friction;
-                    yDegrees += Input.GetAxis("Mouse X") * speed * friction;
-                    fromRotation = transform.rotation;
-                    toRotation = Quaternion.Euler(xDegrees, yDegrees, 0);
-                    transform.rotation = Quaternion.Lerp(fromRotation, toRotation, Time.deltaTime * lerpSpeed);
-                }
-            }
-        }
-        if (Input.GetMouseButtonDown(1))
+
+ 
+
+
+        xDegrees -= Input.GetAxis("Mouse Y") * speed * friction;
+        yDegrees += Input.GetAxis("Mouse X") * speed * friction;
+        fromRotation = transform.rotation;
+        toRotation = Quaternion.Euler(xDegrees, yDegrees, 0);
+        transform.rotation = Quaternion.Lerp(fromRotation, toRotation, Time.deltaTime * lerpSpeed);
+                    
+
+
+        if (Input.GetMouseButtonDown(0))
         {
             FireCannon();
         }
@@ -59,11 +59,9 @@ public class CannonController : MonoBehaviour
 
     public void FireCannon()
     {
-        
         GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation) as GameObject;
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
-
     }
 }
