@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
-
+    public float damage = 10f;
+    public float range = 100f;
     Transform target;
     NavMeshAgent agent;
+
+    public Camera fpsCam;
 
 
 
@@ -24,9 +27,22 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetMouseButton(0))
-            agent.SetDestination(target.position);
+        // Create a Raycast
+        RaycastHit hit;
 
+        // If the raycast hits the enemy, bob & weave, otherwise target the objective.
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit))
+        {
+            Vector3 move = new Vector3(0f, 0f, -1f);
+            agent.Move(move);
+            Debug.Log(hit.transform.name);
+        }
+        else
+        {
+            agent.SetDestination(target.position);
+        }
+        
+        // Also always face the objective to destroy
         FaceTarget();
             
         
