@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.name == "Capsule")
+        {
+            Debug.Log("Dead");
+            gameObject.transform.Translate(90, 90, 90);
+            //Destroy(other.gameObject);
+        }
     }
 }
