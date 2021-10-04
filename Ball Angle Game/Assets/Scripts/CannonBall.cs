@@ -9,8 +9,8 @@ public class CannonBall : MonoBehaviour
         if (other.gameObject.name == "Capsule")
         {
             Debug.Log("Dead");
-            gameObject.transform.Translate(90, 90, 90);
-            //Destroy(other.gameObject);
+            //gameObject.transform.Translate(90, 90, 90);
+            Destroy(other.gameObject);
         }
     }
 }
