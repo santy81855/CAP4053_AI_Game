@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class BAW : MonoBehaviour
+public class BAW : State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        agent.SetDestination(myEnemy.position);
+        return this;
     }
 }

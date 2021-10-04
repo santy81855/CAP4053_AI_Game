@@ -41,9 +41,9 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
-        
+
         // Also always face the objective to destroy
-        FaceTarget();
+        
             
         
     }

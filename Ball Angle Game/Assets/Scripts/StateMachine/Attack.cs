@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Attack : State
 {
-    public override State RunCurrentState()
+    public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("were in");
+        agent.SetDestination(myEnemy.position);
+        return this;
+
     }
 }
