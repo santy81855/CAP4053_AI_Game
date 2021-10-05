@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cannon
+  - Fire
+  - GM
+  - Enemy
   layers:
   - Default
   - TransparentFX
