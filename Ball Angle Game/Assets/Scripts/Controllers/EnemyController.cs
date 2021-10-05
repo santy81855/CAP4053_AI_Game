@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// This class is subject to change since the Enemy AI is now in its own script.
+// Be weary of implementing this until this comment is gone.
 public class EnemyController : MonoBehaviour
 {
+    // Initialize variables.
+    public Camera fpsCam;
     public float lookRadius = 10f;
     public float damage = 10f;
     public float range = 100f;
     Transform target;
     NavMeshAgent agent;
-
-    public Camera fpsCam;
-
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +41,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // Also always face the objective to destroy
-        
-            
-        
+        FaceTarget();
     }
 
     void FaceTarget()

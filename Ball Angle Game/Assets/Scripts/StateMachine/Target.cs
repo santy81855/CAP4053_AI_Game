@@ -42,6 +42,10 @@ public class Target : State
             return this;
         }   
     }
+
+    // FaceTarget() makes the enemy always face the objective.
+    // This is only on in target() because when the enemy is BAWing,
+    // it should probably look away.
     void FaceTarget(Transform target)
     {
         Vector3 direction = (target.position - transform.position).normalized;

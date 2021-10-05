@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8756283}
   - component: {fileID: 8756282}
   - component: {fileID: 8756286}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8756281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: 0.5, z: -0.878}
+  m_LocalPosition: {x: 0.11, y: 0.5, z: 6.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -276,12 +276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 891117144}
-  baw: {fileID: 0}
-  whatIsPlayer:
+  baw: {fileID: 1921783049}
+  whatIsObj:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   playerInAttackRange: 0
-  attackRange: 0
+  attackRange: 5
 --- !u!1 &431939075
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,10 +967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb6be0eeb5907b4ebeea49ffca96dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsCam: {fileID: 881257485}
   lookRadius: 10
   damage: 10
   range: 100
-  fpsCam: {fileID: 881257485}
 --- !u!4 &440445020821430605
 Transform:
   m_ObjectHideFlags: 0
