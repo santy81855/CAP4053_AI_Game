@@ -41,9 +41,9 @@ public class CannonController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, -75, 75);
 
         // Left/Right
-        rotY = Mathf.Clamp(rotY, -25, 205);
+        rotY = Mathf.Clamp(rotY, -115, 115);
 
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
+        Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
         transform.rotation = localRotation;
 
         if (Input.GetMouseButtonDown(0))
