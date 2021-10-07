@@ -8,7 +8,7 @@ public class BAW : State
     // Initialize variables
     public Target targetState;
     public StateManager stateManagerRef;
-    public int maxNumber = 750;
+    public int maxNumber;
     public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
     {
         // Start a Coroutine
