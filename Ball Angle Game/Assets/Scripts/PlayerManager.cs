@@ -16,4 +16,13 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+
+    public void CompleteLevel()
+    {
+        Debug.Log("LEVEL WON!");
+        completeLevelUI.SetActive(true);
+    }
+
+    public GameObject completeLevelUI;
+
 }
