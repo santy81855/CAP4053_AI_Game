@@ -23,6 +23,12 @@ public class PlayerManager : MonoBehaviour
         completeLevelUI.SetActive(true);
     }
 
+    public void LostLevel()
+    {
+        Debug.Log("LEVEL LOST! TRY AGAIN!");
+        lostLevelUI.SetActive(true);
+    }
     public GameObject completeLevelUI;
+    public GameObject lostLevelUI;
 
 }

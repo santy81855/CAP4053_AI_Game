@@ -18,6 +18,6 @@ public class Attack : State
     }
     void OnTriggerEnter()
     {
-        playerManager.CompleteLevel();
+        playerManager.LostLevel();
     }
 }
