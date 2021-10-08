@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Target : State
 {
     // Create states
-    public Attack attack;
-    public BAW baw;
+    public Attack attackState;
+    public BAW bawState;
 
     // Create other checking variables
     public LayerMask whatIsObj;
@@ -24,14 +24,14 @@ public class Target : State
         if (hit.transform == myEnemy)
         {
             // Roll a dice to go to the BAW state, otherwise return this
-            return baw;
+            return bawState;
             
         }
         // Check if the enemy is in the attack range of the video games.
         else if (Physics.CheckSphere(transform.position, attackRange, whatIsObj))
         {
             // Go to the Attack state.
-            return attack;
+            return attackState;
         }
         else
         {
