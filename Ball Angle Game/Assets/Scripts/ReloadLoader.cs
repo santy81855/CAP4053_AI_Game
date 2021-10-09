@@ -18,7 +18,6 @@ public class ReloadLoader : MonoBehaviour
         while (progress <= .99f)
         {
             progress = 1f - ((nextTimeToFire - Time.time) / fireRate);
-            Debug.Log("PROGRESS: " + progress);
             slider.value = progress + .01f;
 
             yield return null;
