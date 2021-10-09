@@ -15,6 +15,10 @@ public class CannonController : MonoBehaviour
     private float rotY;
     private float rotX;
 
+    public float fireRate = 2f;
+    private float nextTimeToFire = 0f;
+
+    public ReloadLoader reloadLoader;
     void Start()
     {
 
@@ -46,8 +50,13 @@ public class CannonController : MonoBehaviour
         Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
         transform.rotation = localRotation;
 
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
         {
+            
+            Debug.Log(Time.time + " " + nextTimeToFire);
+            nextTimeToFire = Time.time + fireRate;
+            reloadLoader.LoadReload(nextTimeToFire, fireRate);
             FireCannon();
         }
     }
