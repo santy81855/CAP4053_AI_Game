@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState {  SPAWNING, WAITING, COUNTING };
+    public GameObject spawn1;
+    public GameObject spawn2;
+    public GameObject spawn3;
 
     // allows us to change the values inside of unity
     [System.Serializable] 
@@ -114,7 +118,27 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(Transform _enemy)
     {
         // spawn enemy
-        Debug.Log("Spawning Enemy: " + _enemy.name);    
-        Instantiate (_enemy, transform.position, transform.rotation);
+        Debug.Log("Spawning Enemy: " + _enemy.name);
+        // Create 3 objects
+        // Get random number
+        // either 1 2 or 3
+        // if random == number
+        // spawn at gameobject -> Instantiate()
+        int spawnNumber = Random.Range(1, 4);
+        if (spawnNumber == 1)
+        {
+            Debug.Log(spawnNumber);
+            Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
+        }
+        else if (spawnNumber == 2)
+        {
+            Debug.Log(spawnNumber);
+            Instantiate(_enemy, spawn2.transform.position, spawn2.transform.rotation);
+        }
+        else
+        {
+            Debug.Log(spawnNumber);
+            Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
+        }
     }
 }
