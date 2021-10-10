@@ -21,7 +21,8 @@ public class BAW : State
 
             // Generate a number to trigger a BAW. This needs to be adjusted based on the level.
             // Keep in mind this runs every frame so 60 times per frame. Need to find a sweet spot.
-            if (Random.Range(1, maxNumber) <= 1)
+            //Random.Range(1, maxNumber) <= 1
+            if (false)
             {
                 // Generate a number either 1 or 2
                 // If one, set the enemy destination 20f right of itself.
