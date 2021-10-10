@@ -9,27 +9,17 @@ public class CannonBall : MonoBehaviour
     private float despawnTime = 3f;
     [SerializeField]
     private int hits = 0;
-    // Detects if the cannon ball collides with an object that has the Is trigger option selected.
-    // Function has been modified to detect any object that has the Is trigger option selected in the unity editor.
-    void OnTriggerEnter(Collider other)
+    // Detects if the cannon ball collides with an object that calls die function from enemy ragdoll in EnemyRagdoll.cs.
+    void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject == null)
-        {
-            return;
-        }
-        if (hits == 0 && other.gameObject == true)//.name == "Capsule")
-        {
-            Debug.Log("Dead");
-            hits++;
-            StartCoroutine(deadTarget(other));
-        }
-    }
+        Debug.Log(other.gameObject);
 
-    // Delays the despawn of the enemy off 3 seconds intially. Currently the enemy still moves after being hit.
-    public IEnumerator deadTarget(Collider other)
-    {
-        yield return new WaitForSeconds(despawnTime);
-        Debug.Log("Waiting 3 seconds");
-        Destroy(other.gameObject);
+        EnemyRagdoll enemy = other.transform.GetComponent<EnemyRagdoll>();
+
+        //Checks if enemy has already been shot
+        if (enemy != null)
+        {
+            enemy.die(despawnTime);
+        }
     }
 }
