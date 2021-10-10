@@ -63,6 +63,7 @@ public class EnemyRagdoll : MonoBehaviour
         GetComponent<Collider>().enabled = !state;
     }
 
+    // For explosion physics after collision. Not currently working
     /*void explode()
     {
         if (collisionExplosion != null)
