@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public GameObject waveText;
     [System.Serializable]
     public class Wave
     {
@@ -55,11 +58,14 @@ public class WaveSpawner : MonoBehaviour
         // Check if the countdown of the wave has hit zero
         if (waveCountdown <= 0)
         {
-           if (state != SpawnState.SPAWNING)
-           {
+            playerManager.UpdateAccuracy(true);
+            StartCoroutine(WaveNumberText());
+          
+            if (state != SpawnState.SPAWNING)
+            {
                // Start spawning new wave
                StartCoroutine( SpawnWave ( waves[nextWave] ) );
-           } 
+            } 
         }
         else
         {
@@ -145,6 +151,14 @@ public class WaveSpawner : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        playerManager.CompleteLevel();
+        playerManager.CompleteLevel(nextWave);
+    }
+
+    IEnumerator WaveNumberText()
+    {
+        waveText.GetComponent<TMP_Text>().text = "Wave: " + (nextWave + 1);
+        waveText.SetActive(true);
+        yield return new WaitForSecondsRealtime(4);
+        waveText.SetActive(false);
     }
 }

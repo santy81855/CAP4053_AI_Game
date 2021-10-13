@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
-
+    public GameObject accuracyText;
+    public GameObject waveText;
     public GameObject player;
     public CannonController cannon;
 
@@ -22,11 +25,17 @@ public class PlayerManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
 
+    private float ballCount = 0;
+    private float ballHit = 0;
 
-    public void CompleteLevel()
+
+    public void CompleteLevel(int nextWave)
     {
         Debug.Log("LEVEL WON!");
+        waveText.SetActive(false);
+        accuracyText.SetActive(false);
         completeLevelUI.SetActive(true);
+        
     }
 
     public void LostLevel()
@@ -60,5 +69,13 @@ public class PlayerManager : MonoBehaviour
         cannonBall.transform.localScale = new Vector3(2f, 2f, 2f);
         yield return new WaitForSecondsRealtime(12);
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void UpdateAccuracy(bool hit)
+    {
+        if(hit)
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((++ballHit / ballCount) * 100) + "%";
+        else
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((ballHit / ++ballCount) * 100) + "%";
     }
 }
