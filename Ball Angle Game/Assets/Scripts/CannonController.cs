@@ -67,5 +67,6 @@ public class CannonController : MonoBehaviour
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
+        
     }
 }
