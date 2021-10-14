@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
+    public AudioSource winAudio;
     public GameObject accuracyText;
     public GameObject waveText;
     public GameObject player;
@@ -31,6 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     public void CompleteLevel(int nextWave)
     {
+        winAudio.Play();
         Debug.Log("LEVEL WON!");
         waveText.SetActive(false);
         accuracyText.SetActive(false);

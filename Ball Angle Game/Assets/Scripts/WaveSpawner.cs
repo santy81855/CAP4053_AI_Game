@@ -111,7 +111,7 @@ public class WaveSpawner : MonoBehaviour
 
     bool EnemyIsAlive()
     {
-        return false;
+        
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
         {
