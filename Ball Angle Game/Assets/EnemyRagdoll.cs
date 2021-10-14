@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyRagdoll : MonoBehaviour
 {
-
+    Rigidbody rb;
     // Start is called before the first frame update
     // Sets the initial conditions for the character with the rigidbodies enabled,
     // coliders disabled and animator on.
@@ -22,10 +23,14 @@ public class EnemyRagdoll : MonoBehaviour
         GetComponent<Animator>().enabled = false;
         setRigidbodyState(false);
         setColliderState(true);
-
+        //EnemyBehavior.getAgent().enabled = false;
+        GetComponent<StateManager>().enabled = false;
+        GetComponent<NavMeshAgent>().enabled = false;
+        //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         // Another check if the gameObject has not been deleted yet
         if (gameObject != null)
         {
+            //Destroy(EnemyBehavior());
             Destroy(gameObject, time);
         }
 

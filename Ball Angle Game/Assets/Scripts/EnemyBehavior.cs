@@ -98,7 +98,7 @@ public class EnemyBehavior : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    /*public void TakeDamage(int damage)
     {
         health -= damage;
 
@@ -107,7 +107,7 @@ public class EnemyBehavior : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }
+    }*/
 
     private void OnDrawGizmosSelected()
     {
@@ -116,4 +116,5 @@ public class EnemyBehavior : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
 }
