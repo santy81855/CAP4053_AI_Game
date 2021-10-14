@@ -18,24 +18,26 @@ public class BAW : State
         {
             // Create a vector
             Vector3 myvec;
-
             // Generate a number to trigger a BAW. This needs to be adjusted based on the level.
             // Keep in mind this runs every frame so 60 times per frame. Need to find a sweet spot.
             //Random.Range(1, maxNumber) <= 1
-            if (false)
+            if (Random.Range(1, maxNumber) == 1)
             {
+
                 // Generate a number either 1 or 2
                 // If one, set the enemy destination 20f right of itself.
                 if (Random.Range(1, 3) == 1)
                 {
                     myvec = new Vector3(0.0f, 0.0f, 20.0f);
                     agent.SetDestination(myEnemy.position + myvec);
+                    Debug.Log(agent.hasPath);
                 }
                 // If two, set the enemy destination 20f right of itself.
                 else
                 {
                     myvec = new Vector3(0.0f, 0.0f, -20.0f);
                     agent.SetDestination(myEnemy.position + myvec);
+                    Debug.Log(agent.hasPath);
                 }
 
                 // Disable the stateManager script for some time and then renable it to go back to the target state
