@@ -22,12 +22,12 @@ public class Zones : MonoBehaviour
     public float zone3XEnd;
     public float zone3YStart;
     public float zone3YEnd;
-    public UnityEngine.AI.NavMeshAgent agent;
+    UnityEngine.AI.NavMeshAgent agent;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
