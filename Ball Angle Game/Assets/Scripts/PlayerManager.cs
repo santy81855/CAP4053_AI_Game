@@ -76,9 +76,9 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateAccuracy(bool hit)
     {
-        if(hit)
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((++ballHit / ballCount) * 100) + "%";
+        if (hit)
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((++ballHit / ++ballCount) * 100) + "%";
         else
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((ballHit / ++ballCount) * 100) + "%";
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((ballHit / ++ballCount) * 100) + "%";
     }
 }

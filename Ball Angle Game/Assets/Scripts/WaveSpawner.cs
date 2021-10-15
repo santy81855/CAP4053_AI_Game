@@ -18,10 +18,16 @@ public class WaveSpawner : MonoBehaviour
         public int count;
         public float rate;
     }
-    public enum SpawnState {  SPAWNING, WAITING, COUNTING };
+    public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING };
+    public GameObject bigBall;
+    public GameObject fastFire;
+    public Transform bigBallSpawn;
+    public Transform fastFireSpawn;
     public GameObject spawn1;
     public GameObject spawn2;
     public GameObject spawn3;
+    public GameObject spawn4;
+    public GameObject spawn5;
     public PlayerManager playerManager;
     // allows us to change the values inside of unity
      
@@ -34,6 +40,8 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
 
+    private int ffFlag = 0;
+    private int bbFlag = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +51,10 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == SpawnState.ENDING)
+        {
+            return;
+        }
         // If we are in the wait state
         if (state == SpawnState.WAITING)
         {
@@ -60,6 +72,16 @@ public class WaveSpawner : MonoBehaviour
         // Check if the countdown of the wave has hit zero
         if (waveCountdown <= 0)
         {
+            if (nextWave == 1 && ffFlag == 0)
+            {
+                Instantiate(fastFire, fastFireSpawn.position, fastFireSpawn.rotation);
+                ffFlag = 1;
+            }
+            if (nextWave == 2 && bbFlag == 0)
+            {
+                Instantiate(bigBall, bigBallSpawn.position, bigBallSpawn.rotation);
+                bbFlag = 1;
+            }
             if (state != SpawnState.SPAWNING)
             {
                 // start spawning wave
@@ -87,10 +109,10 @@ public class WaveSpawner : MonoBehaviour
         // Otherwise, move on to the next wave
         if (nextWave + 1 > waves.Length - 1)
         {
-
+            StartCoroutine(WaitForWin());
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
-            playerManager.CompleteLevel();
+            state = SpawnState.ENDING;
             
         }
         else
@@ -135,37 +157,35 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-        Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
-        // spawn enemy
-        //        Debug.Log("Spawning Enemy: " + _enemy.name);
-        // Create 3 objects
-        // Get random number
-        // either 1 2 or 3
-        // if random == number
-        // spawn at gameobject -> Instantiate()
-        // Generate a random number and spawn at one of the locations.
-        /*int spawnNumber = Random.Range(1, 4);
+        int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
         {
             //Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
+
         }
         else if (spawnNumber == 2)
         {
             //Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn2.transform.position, spawn2.transform.rotation);
         }
-        else
+        else if (spawnNumber == 3)
         {
             //Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
-        }*/
+        }
+        else if (spawnNumber == 4)
+        {
+            //Debug.Log(spawnNumber);
+            Instantiate(_enemy, spawn4.transform.position, spawn4.transform.rotation);
+        }
+        else if (spawnNumber == 5)
+        {
+            //Debug.Log(spawnNumber);
+            Instantiate(_enemy, spawn5.transform.position, spawn5.transform.rotation);
+        }
     }
 
-    void OnTriggerEnter()
-    {
-        
-    }
 
     IEnumerator WaveNumberText()
     {
@@ -173,5 +193,11 @@ public class WaveSpawner : MonoBehaviour
         waveText.SetActive(true);
         yield return new WaitForSecondsRealtime(4);
         waveText.SetActive(false);
+    }
+
+    IEnumerator WaitForWin()
+    {
+        yield return new WaitForSecondsRealtime(15);
+        playerManager.CompleteLevel();
     }
 }

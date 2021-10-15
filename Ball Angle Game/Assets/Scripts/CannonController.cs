@@ -65,7 +65,7 @@ public class CannonController : MonoBehaviour
 
     public void FireCannon()
     {
-        GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation) as GameObject;
+        GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation);
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
