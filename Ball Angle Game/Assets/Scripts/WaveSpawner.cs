@@ -66,16 +66,7 @@ public class WaveSpawner : MonoBehaviour
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
 
-
-            playerManager.UpdateAccuracy(true);
             StartCoroutine(WaveNumberText());
-
-            if (state != SpawnState.SPAWNING)
-            {
-                // Start spawning new wave
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-
         }
         else
         {
@@ -99,8 +90,8 @@ public class WaveSpawner : MonoBehaviour
 
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
-
-            OnTriggerEnter();
+            playerManager.CompleteLevel();
+            
         }
         else
         {
@@ -111,7 +102,7 @@ public class WaveSpawner : MonoBehaviour
 
     bool EnemyIsAlive()
     {
-        
+        return false;
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
         {
@@ -144,7 +135,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-
+        Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
         // spawn enemy
         //        Debug.Log("Spawning Enemy: " + _enemy.name);
         // Create 3 objects
@@ -153,7 +144,7 @@ public class WaveSpawner : MonoBehaviour
         // if random == number
         // spawn at gameobject -> Instantiate()
         // Generate a random number and spawn at one of the locations.
-        int spawnNumber = Random.Range(1, 4);
+        /*int spawnNumber = Random.Range(1, 4);
         if (spawnNumber == 1)
         {
             //Debug.Log(spawnNumber);
@@ -168,12 +159,12 @@ public class WaveSpawner : MonoBehaviour
         {
             //Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
-        }
+        }*/
     }
 
     void OnTriggerEnter()
     {
-        playerManager.CompleteLevel(nextWave);
+        
     }
 
     IEnumerator WaveNumberText()

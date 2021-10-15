@@ -30,14 +30,15 @@ public class PlayerManager : MonoBehaviour
     private float ballHit = 0;
 
 
-    public void CompleteLevel(int nextWave)
+    public void CompleteLevel()
     {
-        winAudio.Play();
+        
         Debug.Log("LEVEL WON!");
         waveText.SetActive(false);
         accuracyText.SetActive(false);
         completeLevelUI.SetActive(true);
-        
+        winAudio.Play();
+
     }
 
     public void LostLevel()
