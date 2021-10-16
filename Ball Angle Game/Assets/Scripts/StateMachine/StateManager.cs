@@ -18,6 +18,7 @@ public class StateManager : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         myEnemy = transform;
+        fpsCam = Camera.main;
     }
     
     // Update is called once per frame

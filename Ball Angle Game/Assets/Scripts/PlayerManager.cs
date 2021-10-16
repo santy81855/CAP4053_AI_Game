@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
     public AudioSource winAudio;
+    public AudioSource loseAudio;
     public GameObject accuracyText;
     public GameObject waveText;
     public GameObject player;
@@ -45,6 +46,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("LEVEL LOST! TRY AGAIN!");
         lostLevelUI.SetActive(true);
+        loseAudio.Play();
     }
 
     public void PowerUp(int powerIndex)

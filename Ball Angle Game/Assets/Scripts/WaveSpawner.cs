@@ -77,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
                 Instantiate(fastFire, fastFireSpawn.position, fastFireSpawn.rotation);
                 ffFlag = 1;
             }
-            if (nextWave == 2 && bbFlag == 0)
+            if (nextWave == 0 && bbFlag == 0)
             {
                 Instantiate(bigBall, bigBallSpawn.position, bigBallSpawn.rotation);
                 bbFlag = 1;
@@ -124,7 +124,6 @@ public class WaveSpawner : MonoBehaviour
 
     bool EnemyIsAlive()
     {
-        return false;
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
         {
@@ -133,6 +132,7 @@ public class WaveSpawner : MonoBehaviour
             // When the timer is up, check if there are any enemies left.
             if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
+                Debug.Log("WE HAVE NO ENEMIES ON THE BOARD");
                 return false;
             }
         }
