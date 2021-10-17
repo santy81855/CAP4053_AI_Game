@@ -109,7 +109,7 @@ public class WaveSpawner : MonoBehaviour
         // Otherwise, move on to the next wave
         if (nextWave + 1 > waves.Length - 1)
         {
-            StartCoroutine(WaitForWin());
+            playerManager.CompleteLevel();
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
             state = SpawnState.ENDING;
@@ -193,11 +193,5 @@ public class WaveSpawner : MonoBehaviour
         waveText.SetActive(true);
         yield return new WaitForSecondsRealtime(4);
         waveText.SetActive(false);
-    }
-
-    IEnumerator WaitForWin()
-    {
-        yield return new WaitForSecondsRealtime(15);
-        playerManager.CompleteLevel();
     }
 }
