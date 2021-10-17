@@ -3227,6 +3227,7 @@ GameObject:
   - component: {fileID: 8821617299532854131}
   - component: {fileID: 8821617299532854130}
   - component: {fileID: 8820701993852128080}
+  - component: {fileID: 8518669766695485495}
   m_Layer: 0
   m_Name: FinalEnemy
   m_TagString: Enemy
@@ -3359,6 +3360,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447618cb45dadff449c7002e6aafd2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8518669766695485495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820701993852128081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8c4cb11db04c94e8afc9e98fed217c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone1XStart: 17
+  zone1XEnd: -10
+  zone1YStart: -10
+  zone1YEnd: 10
+  zone2XStart: 53
+  zone2XEnd: 17
+  zone2YStart: -10
+  zone2YEnd: 10
+  zone3XStart: 53
+  zone3XEnd: 110
+  zone3YStart: -10
+  zone3YEnd: 10
+  agent: {fileID: 0}
 --- !u!1 &8820707534522858721
 GameObject:
   m_ObjectHideFlags: 0
