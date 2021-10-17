@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Zones : MonoBehaviour
 {
+    public float baseSpeed;
     private float zone1SpeedMultiplier = 0.8f;
     private float zone2SpeedMultiplier = 1.2f;
     private float zone3SpeedMultiplier = 1.4f;
@@ -36,17 +37,17 @@ public class Zones : MonoBehaviour
         var position = transform.position;
         if (position.x > zone3XStart && position.x < zone3XEnd && position.y > zone3YStart && position.y < zone3YEnd &&currentZone != 1)
         {
-            agent.speed *= zone1SpeedMultiplier;
+            agent.speed = baseSpeed * zone1SpeedMultiplier;
             currentZone = 1;
         }
         else if (position.x > zone2XStart && position.x < zone2XEnd && position.y > zone2YStart && position.y < zone2YEnd &&currentZone != 2)
         {
-            agent.speed *= zone2SpeedMultiplier;
+            agent.speed = baseSpeed * zone2SpeedMultiplier;
             currentZone = 2;
         }
         else if (position.x > zone3XStart && position.x < zone3XEnd && position.y > zone3YStart && position.y < zone3YEnd &&currentZone != 3)
         {
-            agent.speed *= zone3SpeedMultiplier;
+            agent.speed = baseSpeed * zone3SpeedMultiplier;
             currentZone = 3;
         }
     }
