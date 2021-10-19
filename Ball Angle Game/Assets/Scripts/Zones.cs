@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Zones : MonoBehaviour
 {
-    private float zone1SpeedMultiplier = 0.8f;
+    private float zone1SpeedMultiplier = 4f;
     private float zone2SpeedMultiplier = 1.2f;
     private float zone3SpeedMultiplier = 1.4f;
     // 1 = zone 1, 2 = zone 2, 3 = zone 3
     int currentZone = 0;
+
 
     public float zone1XStart;
     public float zone1XEnd;
@@ -23,6 +25,7 @@ public class Zones : MonoBehaviour
     public float zone3YStart;
     public float zone3YEnd;
     UnityEngine.AI.NavMeshAgent agent;
+
     
     // Start is called before the first frame update
     void Start()

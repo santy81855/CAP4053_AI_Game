@@ -16,6 +16,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
+    public AudioSource winAudio;
+    public AudioSource loseAudio;
     public GameObject accuracyText;
     public GameObject waveText;
     public GameObject player;
@@ -29,19 +31,22 @@ public class PlayerManager : MonoBehaviour
     private float ballHit = 0;
 
 
-    public void CompleteLevel(int nextWave)
+    public void CompleteLevel()
     {
+        
         Debug.Log("LEVEL WON!");
         waveText.SetActive(false);
         accuracyText.SetActive(false);
         completeLevelUI.SetActive(true);
-        
+        winAudio.Play();
+
     }
 
     public void LostLevel()
     {
         Debug.Log("LEVEL LOST! TRY AGAIN!");
         lostLevelUI.SetActive(true);
+        loseAudio.Play();
     }
 
     public void PowerUp(int powerIndex)
@@ -73,9 +78,9 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateAccuracy(bool hit)
     {
-        if(hit)
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((++ballHit / ballCount) * 100) + "%";
+        if (hit)
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((++ballHit / ++ballCount) * 100) + "%";
         else
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + ((ballHit / ++ballCount) * 100) + "%";
+            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((ballHit / ++ballCount) * 100) + "%";
     }
 }

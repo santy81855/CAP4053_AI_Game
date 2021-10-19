@@ -28,11 +28,8 @@ public class EnemyRagdoll : MonoBehaviour
         GetComponent<NavMeshAgent>().enabled = false;
         //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         // Another check if the gameObject has not been deleted yet
-        if (gameObject != null)
-        {
-            //Destroy(EnemyBehavior());
-            Destroy(gameObject, time);
-        }
+        StartCoroutine(EnemyGone());
+
 
     }
 
@@ -93,5 +90,13 @@ public class EnemyRagdoll : MonoBehaviour
             Destroy(explosion, 1f);
         }
     }*/
-
+    IEnumerator EnemyGone()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        if (gameObject != null)
+        {
+            //Destroy(EnemyBehavior());
+            Destroy(gameObject);
+        }
+    }
 }

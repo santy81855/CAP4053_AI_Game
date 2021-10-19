@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: b104125b448c6fd4cace150ffca8f23e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Kyle/WinLose.unity
     guid: 1cdcb26ca5cd44b46bfa8a0f5f6c980b
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevel.unity
+    guid: f7559c65e5a64234cade7792c2fdabf3
   m_configObjects: {}
