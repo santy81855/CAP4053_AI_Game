@@ -11,24 +11,26 @@ public class Zones : MonoBehaviour
     // 1 = zone 1, 2 = zone 2, 3 = zone 3
     int currentZone = 0;
 
-    public float zone1XStart = 17.0f;
-    public float zone1XEnd = -10.0f;
-    public float zone1YStart = -10.0f;
-    public float zone1YEnd = 10.0f;
-    public float zone2XStart = 53.0f;
-    public float zone2XEnd = 17.0f;
-    public float zone2YStart = -10.0f;
-    public float zone2YEnd = 10.0f;
-    public float zone3XStart = 53.0f;
-    public float zone3XEnd = 110.0f;
-    public float zone3YStart = -10.0f;
-    public float zone3YEnd = 10.0f;
-    public UnityEngine.AI.NavMeshAgent agent;
+
+    public float zone1XStart;
+    public float zone1XEnd;
+    public float zone1YStart;
+    public float zone1YEnd;
+    public float zone2XStart;
+    public float zone2XEnd;
+    public float zone2YStart;
+    public float zone2YEnd;
+    public float zone3XStart;
+    public float zone3XEnd;
+    public float zone3YStart;
+    public float zone3YEnd;
+    UnityEngine.AI.NavMeshAgent agent;
+
     
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
