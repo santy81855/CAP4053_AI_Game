@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CannonController : MonoBehaviour
 {
     // Cannon Firing Variables
+    public AudioSource fireSound;
     public GameObject cannonBall;
     Rigidbody cannonballRB;
     public Transform shotPos;
@@ -63,10 +65,12 @@ public class CannonController : MonoBehaviour
 
     public void FireCannon()
     {
-        GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation) as GameObject;
+        GameObject cannonBallCopy = Instantiate(cannonBall, shotPos.position, transform.rotation);
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
+
+        fireSound.Play();
         
     }
 }
