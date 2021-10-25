@@ -6522,6 +6522,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 242139046}
+    - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
       propertyPath: bigBallSpawn
       value: 
       objectReference: {fileID: 1054412002}
