@@ -8,6 +8,7 @@ public class CannonController : MonoBehaviour
     // Cannon Firing Variables
     public AudioSource fireSound;
     public GameObject cannonBall;
+    public GameObject disableCursor;
     Rigidbody cannonballRB;
     public Transform shotPos;
     public GameObject explosion;
@@ -35,6 +36,18 @@ public class CannonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Pause_Menu.GameIsPaused == true)
+        {
+            disableCursor.SetActive(false);
+            Cursor.visible = (true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            disableCursor.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = (false);
+        }
 
         //Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         float mouseX = Input.GetAxis("Mouse X") * 20;
@@ -53,9 +66,9 @@ public class CannonController : MonoBehaviour
         transform.rotation = localRotation;
 
 
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
         {
-            
+
             Debug.Log(Time.time + " " + nextTimeToFire);
             nextTimeToFire = Time.time + fireRate;
             reloadLoader.LoadReload(nextTimeToFire, fireRate);
@@ -71,6 +84,6 @@ public class CannonController : MonoBehaviour
         Instantiate(explosion, shotPos.position, shotPos.rotation);
 
         fireSound.Play();
-        
+
     }
 }
