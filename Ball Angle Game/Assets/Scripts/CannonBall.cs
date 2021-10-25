@@ -4,40 +4,44 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
-    public PlayerManager playerManager;
-    // Despawn time can be changed from editor
-    [SerializeField]
-    private float despawnTime = 3f;
-    [SerializeField]
-    private int hits = 0;
+    [SerializeField] float despawnTime = 3f;
+    private GameManager gameManager;
     private bool hitEnemy = false;
-    // Detects if the cannon ball collides with an object that calls die function from enemy ragdoll in EnemyRagdoll.cs.
+    
+    void Start()
+    {
+        // Reference the GameManager Singleton
+        gameManager = GameManager.instance;
+    }
 
+    // Detects if there is a collision with an object and sends
+    // data to the correct place.
     void OnCollisionEnter(Collision other)
     {
-    
+        // Start the despawn coroutine
         StartCoroutine(DespawnBall());
-        Debug.Log(other.gameObject);
 
+        // Get the enemy from the other object if there is one
         EnemyRagdoll enemy = other.transform.GetComponent<EnemyRagdoll>();
 
-        //Checks if enemy has already been shot
+        // If it did hit an enemy, kill the enemy and mark good accuracy
         if (enemy != null)
         {
             enemy.die(despawnTime);
             hitEnemy = true;
         }
-        
+        else
+        {
+            // Nothing! Wait for the coroutine to destroy the ball.
+        }
     }
 
+    // Coroutine that despawns the ball after a certain amount of time.
     IEnumerator DespawnBall()
     {
-        Debug.Log("Waiting 5");
+        // Wait 5 seconds, then pass the hit to the GameManager and destroy the ball
         yield return new WaitForSecondsRealtime(5);
-        Debug.Log("Done!");
-        
-        playerManager.UpdateAccuracy(hitEnemy);
+        gameManager.UpdateAccuracy(hitEnemy);
         Destroy(gameObject);
-
     }
 }

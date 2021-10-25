@@ -15,7 +15,7 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         // Get needed variables at start
-        target = PlayerManager.instance.player.transform;
+        target = GameManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         myEnemy = transform;
         fpsCam = Camera.main;

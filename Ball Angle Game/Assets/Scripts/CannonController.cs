@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class CannonController : MonoBehaviour
 {
     // Cannon Firing Variables
-    public AudioSource fireSound;
+    private AudioSource fireSound;
     public GameObject cannonBall;
     Rigidbody cannonballRB;
     public Transform shotPos;
@@ -23,13 +23,12 @@ public class CannonController : MonoBehaviour
     public ReloadLoader reloadLoader;
     void Start()
     {
-
         firePower *= powerMultiplier;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.None;
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
+        fireSound = AudioManager.instance.FireAudio;
     }
 
     // Update is called once per frame

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class FastFireRate : MonoBehaviour
 {
-    public PlayerManager playerManager;
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameManager.instance;
+    }
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("We hit");
-        playerManager.PowerUp(0);
+        gameManager.PowerUp(0);
         Destroy(gameObject);
     }
 }

@@ -7,11 +7,11 @@ public class Attack : State
 {
     public StateManager stateManagerRef;
     public Target targetState;
-    public PlayerManager playerManager;
+    public GameManager gameManager;
 
     private void Start()
     {
-        playerManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PlayerManager>();
+        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
     // Still haven't finished this class yet. Waiting to implement attack feature.
     public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
@@ -23,6 +23,6 @@ public class Attack : State
     }
     void OnTriggerEnter()
     {
-        playerManager.LostLevel();
+        gameManager.LostLevel();
     }
 }

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class BigBall : MonoBehaviour
 {
-    public PlayerManager playerManager;
+    public GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameManager.instance;
+    }
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("We hit");
-        playerManager.PowerUp(1);
+        gameManager.PowerUp(1);
         Destroy(gameObject);
     }
 }

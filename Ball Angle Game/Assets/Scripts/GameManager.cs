@@ -4,20 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     #region Singleton
 
-    public static PlayerManager instance;
-    public GameObject cannonBall;
-    void Awake()
+    public static GameManager instance;
+    
+    private void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     #endregion
-    public AudioSource winAudio;
-    public AudioSource loseAudio;
+    public GameObject cannonBall;
+    private AudioSource winAudio;
+    private AudioSource loseAudio;
     public GameObject accuracyText;
     public GameObject waveText;
     public GameObject player;
@@ -30,7 +31,11 @@ public class PlayerManager : MonoBehaviour
     private float ballCount = 0;
     private float ballHit = 0;
 
-
+    void Start()
+    {
+        winAudio = AudioManager.instance.WinAudio;
+        loseAudio = AudioManager.instance.LoseAudio;
+    }
     public void CompleteLevel()
     {
         
