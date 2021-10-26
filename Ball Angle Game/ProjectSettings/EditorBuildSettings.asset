@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kyle/Menu.unity
     guid: 925d9e1617ba8704bb726b94e3142897
+  - enabled: 1
+    path: Assets/Scenes/Joel/Level Select.unity
+    guid: d153f5916c46ef84d9c687f75022f3c1
   - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: b104125b448c6fd4cace150ffca8f23e
