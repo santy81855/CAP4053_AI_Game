@@ -8,7 +8,7 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject waveText;
+    
     [System.Serializable]
 
     public class Wave
@@ -19,6 +19,7 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
     }
     public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING };
+    public GameObject waveText;
     public GameObject bigBall;
     public GameObject fastFire;
     public Transform bigBallSpawn;
@@ -28,7 +29,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject spawn3;
     public GameObject spawn4;
     public GameObject spawn5;
-    public PlayerManager playerManager;
+    private GameManager gameManager;
     // allows us to change the values inside of unity
      
     public Wave[] waves;
@@ -46,6 +47,7 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         waveCountdown = timeBetweenWaves;
+        gameManager = gameObject.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -109,7 +111,7 @@ public class WaveSpawner : MonoBehaviour
         // Otherwise, move on to the next wave
         if (nextWave + 1 > waves.Length - 1)
         {
-            playerManager.CompleteLevel();
+            gameManager.CompleteLevel();
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
             state = SpawnState.ENDING;
@@ -154,7 +156,6 @@ public class WaveSpawner : MonoBehaviour
 
         yield break;
     }
-
     void SpawnEnemy(Transform _enemy)
     {
         int spawnNumber = Random.Range(1, 6);

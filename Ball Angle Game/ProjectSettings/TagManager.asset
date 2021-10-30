@@ -9,6 +9,7 @@ TagManager:
   - GM
   - Enemy
   - Manager
+  - AudioManager
   layers:
   - Default
   - TransparentFX
