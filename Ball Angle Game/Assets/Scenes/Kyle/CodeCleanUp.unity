@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 4958336412dda7049953993560d20d24, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ba6ec1ea0936c40439cbb0a0aae4b51a, type: 2}
 --- !u!1 &414878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +3893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CannonBall
       objectReference: {fileID: 0}
+    - target: {fileID: 1795163045440529720, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6346140466420997260, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -6472,7 +6476,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556913, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
       propertyPath: cannonBall
       value: 
-      objectReference: {fileID: 121253878}
+      objectReference: {fileID: 1795163045440529720, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
     - target: {fileID: 6335889492121556913, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
       propertyPath: lostLevelUI
       value: 
@@ -20989,7 +20993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b81b6c289fb374b8a7c982a823a8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
 --- !u!136 &895367094
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -48310,14 +48313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9604b626fa1228042b6b58181bbf3831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonBall: {fileID: 121253878}
+  cannonBall: {fileID: 1795163045440529720, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
   shotPos: {fileID: 7943444697299871608}
   explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
   firePower: 15
+  fireRate: 2
   powerMultiplier: 100
   mouseSensitivity: 100
-  fireRate: 2
-  reloadLoader: {fileID: 1581718918}
 --- !u!23 &2852510171889943619
 MeshRenderer:
   m_ObjectHideFlags: 0

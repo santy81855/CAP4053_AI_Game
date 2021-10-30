@@ -8,7 +8,7 @@ public class FastFireRate : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
     }
     void OnCollisionEnter(Collision collision)
     {

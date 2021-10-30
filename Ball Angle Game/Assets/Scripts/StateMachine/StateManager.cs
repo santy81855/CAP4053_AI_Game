@@ -15,7 +15,7 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         // Get needed variables at start
-        target = GameManager.instance.player.transform;
+        target = GameManager.Instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         myEnemy = transform;
         fpsCam = Camera.main;
@@ -26,7 +26,6 @@ public class StateManager : MonoBehaviour
     {
         // Run the state machine
         RunStateMachine();
-        
     }
 
     private void RunStateMachine()

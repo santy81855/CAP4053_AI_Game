@@ -156,7 +156,6 @@ public class WaveSpawner : MonoBehaviour
 
         yield break;
     }
-
     void SpawnEnemy(Transform _enemy)
     {
         int spawnNumber = Random.Range(1, 6);

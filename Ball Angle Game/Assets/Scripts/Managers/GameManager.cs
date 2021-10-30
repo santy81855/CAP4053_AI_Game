@@ -7,12 +7,21 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
+    private static GameManager instance;
 
-    public static GameManager instance;
-    
+    public static GameManager Instance { get { return instance; } }
+
+
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     #endregion
@@ -33,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        winAudio = AudioManager.instance.WinAudio;
-        loseAudio = AudioManager.instance.LoseAudio;
+        winAudio = AudioManager.Instance.WinAudio;
+        loseAudio = AudioManager.Instance.LoseAudio;
     }
     public void CompleteLevel()
     {
