@@ -5,12 +5,12 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject waveText;
+    
     [System.Serializable]
 
+    // Predefined variables for each wave
     public class Wave
     {
         public string name;
@@ -18,39 +18,45 @@ public class WaveSpawner : MonoBehaviour
         public int count;
         public float rate;
     }
-    public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING };
+    // all variables that need to be imported in the unity editor
+    public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING }; 
+    public GameObject waveText; 
     public GameObject bigBall;
     public GameObject fastFire;
     public Transform bigBallSpawn;
     public Transform fastFireSpawn;
+    // spawn locations
     public GameObject spawn1;
     public GameObject spawn2;
     public GameObject spawn3;
     public GameObject spawn4;
     public GameObject spawn5;
-    public PlayerManager playerManager;
-    // allows us to change the values inside of unity
-     
+    private GameManager gameManager;
+    // array of predefined number of waves 
     public Wave[] waves;
     private int nextWave = 0;
-
-    public float timeBetweenWaves = 5f;
+    // Time between waves defaults to 5 seconds, but it can be changed in editor
+    public float timeBetweenWaves = 5f; 
+    // the amount of time for a wave to start.
     public float waveCountdown;
 
     private float searchCountdown = 1f;
     private SpawnState state = SpawnState.COUNTING;
-
+    // fast fire powerfup flag
     private int ffFlag = 0;
+    // big ball powerup flag
     private int bbFlag = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
         waveCountdown = timeBetweenWaves;
+        gameManager = gameObject.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (state == SpawnState.ENDING)
         {
             return;
@@ -58,11 +64,12 @@ public class WaveSpawner : MonoBehaviour
         // If we are in the wait state
         if (state == SpawnState.WAITING)
         {
-            // Check to see if enemies are still alive in the wave
+            //  if no enemies are alive, then the wave is completed
             if (!EnemyIsAlive())
             {
                 WaveCompleted();
             }
+            // if any enemies are alive
             else
             {
                 return;
@@ -72,16 +79,19 @@ public class WaveSpawner : MonoBehaviour
         // Check if the countdown of the wave has hit zero
         if (waveCountdown <= 0)
         {
+            // fast fire powerup in wave 1
             if (nextWave == 1 && ffFlag == 0)
             {
                 Instantiate(fastFire, fastFireSpawn.position, fastFireSpawn.rotation);
                 ffFlag = 1;
             }
+            // big ball powerup in wave 0
             if (nextWave == 0 && bbFlag == 0)
             {
                 Instantiate(bigBall, bigBallSpawn.position, bigBallSpawn.rotation);
                 bbFlag = 1;
             }
+            // if countdown reaches 0 and we are not spawning a wave then we spawn a wave
             if (state != SpawnState.SPAWNING)
             {
                 // start spawning wave
@@ -109,7 +119,7 @@ public class WaveSpawner : MonoBehaviour
         // Otherwise, move on to the next wave
         if (nextWave + 1 > waves.Length - 1)
         {
-            playerManager.CompleteLevel();
+            gameManager.CompleteLevel();
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
             state = SpawnState.ENDING;
@@ -141,6 +151,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        // set the state to show that we are currently spawning enemies
         state = SpawnState.SPAWNING;
 
         // Loop through and spawn enemies
@@ -149,7 +160,7 @@ public class WaveSpawner : MonoBehaviour
             SpawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
-
+        // set the state to waiting once the enemies have been spawned
         state = SpawnState.WAITING;
 
         yield break;
@@ -157,6 +168,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
+        // randomly determine which of the 5 locations to spawn each enemy
         int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
         {
@@ -185,7 +197,6 @@ public class WaveSpawner : MonoBehaviour
             Instantiate(_enemy, spawn5.transform.position, spawn5.transform.rotation);
         }
     }
-
 
     IEnumerator WaveNumberText()
     {
