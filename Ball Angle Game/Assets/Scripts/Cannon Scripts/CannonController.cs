@@ -14,7 +14,6 @@ public class CannonController : MonoBehaviour
     public float fireRate = 2f;
     public int powerMultiplier = 100;
     public float mouseSensitivity = 100.0f;
-    public GameObject disableCursor;
 
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;
@@ -40,13 +39,11 @@ public class CannonController : MonoBehaviour
 
         if (Pause_Menu.GameIsPaused == true)
         {
-            disableCursor.SetActive(false);
             Cursor.visible = (true);
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            disableCursor.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = (false);
         }
