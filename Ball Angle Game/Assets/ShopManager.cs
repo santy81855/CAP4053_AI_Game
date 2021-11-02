@@ -11,11 +11,8 @@ public class ShopManager : MonoBehaviour
     public float coins;
     public TMP_Text coinsText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        coinsText.text = "Coins: " + coins.ToString();
-
         // ID
         shopItems[1, 1] = 1;
         shopItems[1, 2] = 2;
@@ -33,9 +30,11 @@ public class ShopManager : MonoBehaviour
         shopItems[3, 2] = 0;
         shopItems[3, 3] = 0;
         shopItems[3, 4] = 0;
-
-
-
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        coinsText.text = "Coins: " + coins.ToString();
     }
 
     public void Buy()
