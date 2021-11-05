@@ -44,6 +44,22 @@ public class GameManager : MonoBehaviour
     {
         winAudio = AudioManager.Instance.WinAudio;
         loseAudio = AudioManager.Instance.LoseAudio;
+        cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            PowerUp(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            PowerUp(1);
+        /*
+            These PowerUps will be implemented at a different time
+        if (Input.GetKeyDown("Alpha3"))
+            PowerUp(2);
+        if (Input.GetKeyDown("Alpha4"))
+            PowerUp(3);
+        */
     }
     public void CompleteLevel()
     {
@@ -77,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FastFireRate()
     {
+        Debug.Log("POWERUP: FAST FIRE!!!");
         float temp = cannon.fireRate;
         cannon.fireRate /= 2f;
         yield return new WaitForSecondsRealtime(7);
@@ -85,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BigBall()
     {
+        Debug.Log("POWERUP: BIG BALLS!!!");
         cannonBall.transform.localScale = new Vector3(2f, 2f, 2f);
         yield return new WaitForSecondsRealtime(12);
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
