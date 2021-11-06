@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject waveText;
     public GameObject player;
     public CannonController cannon;
-
+    public GameObject shopUI;
 
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
@@ -60,6 +60,20 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("Alpha4"))
             PowerUp(3);
         */
+
+        if (Input.GetKeyDown(KeyCode.B) && shopUI.activeSelf)
+        {
+            Debug.Log(shopUI.activeSelf);
+            Debug.Log("Exiting Shop");
+            shopUI.SetActive(false);
+        }    
+        else if (Input.GetKeyDown(KeyCode.B) && !shopUI.activeSelf)
+        {
+            Debug.Log(shopUI.activeSelf);
+            Debug.Log("Entering Shop");
+            shopUI.SetActive(true);
+        }
+
     }
     public void CompleteLevel()
     {
