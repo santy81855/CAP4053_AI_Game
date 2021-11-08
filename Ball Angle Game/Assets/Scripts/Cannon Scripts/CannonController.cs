@@ -42,11 +42,7 @@ public class CannonController : MonoBehaviour
             Cursor.visible = (true);
             Cursor.lockState = CursorLockMode.None;
         }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = (false);
-        }
+
 
         // Get input from mouse
         float mouseX = Input.GetAxis("Mouse X") * 20;

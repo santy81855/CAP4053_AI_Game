@@ -3970,7 +3970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795163045440529720, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346140466420997260, guid: 83e4ebede58d4894bb1240e91caa9741, type: 3}
       propertyPath: m_RootOrder
@@ -6564,6 +6564,14 @@ PrefabInstance:
       propertyPath: accuracyText
       value: 
       objectReference: {fileID: 2025698429}
+    - target: {fileID: 6335889492121556913, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
+      propertyPath: abilityCount1
+      value: 
+      objectReference: {fileID: 475852980}
+    - target: {fileID: 6335889492121556913, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
+      propertyPath: abilityCount2
+      value: 
+      objectReference: {fileID: 2037717095}
     - target: {fileID: 6335889492121556913, guid: 21b7fa4448e7ade41a5e158baa3c3997, type: 3}
       propertyPath: completeLevelUI
       value: 
@@ -36978,8 +36986,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2b37b5007cd548b16142de04e7998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 1000
   coinsText: {fileID: 2493749080982337430}
+  q1: {fileID: 475852980}
+  q2: {fileID: 2037717095}
+  quantityDisplay: []
 --- !u!4 &1582301479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4571776215605590, guid: a6cd0c657da915144bd367d385c0fc31, type: 3}
@@ -40851,6 +40862,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01bbe20c855564648b02e0092e511cac, type: 3}
+--- !u!1 &1830079917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830079920}
+  - component: {fileID: 1830079919}
+  - component: {fileID: 1830079918}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Event
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1830079918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830079917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1830079919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830079917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1830079920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830079917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1830527666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50383,7 +50460,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &2493749081843901577
 RectTransform:
@@ -50632,7 +50709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.0010078, y: 0.000019727755}
+  m_AnchoredPosition: {x: -0.99997324, y: 0.000019727755}
   m_SizeDelta: {x: 0, y: 356.06}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2493749082062483143

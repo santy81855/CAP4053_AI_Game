@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public CannonController cannon;
     public GameObject shopUI;
 
+    public TMP_Text abilityCount1;
+    public TMP_Text abilityCount2;
+
+
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
 
@@ -49,10 +53,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && (int.Parse(abilityCount1.text) != 0))
+        {
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(1);
             PowerUp(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && (int.Parse(abilityCount2.text) != 0))
+        {
             PowerUp(1);
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
+        }
+            
         /*
             These PowerUps will be implemented at a different time
         if (Input.GetKeyDown("Alpha3"))
@@ -66,12 +79,15 @@ public class GameManager : MonoBehaviour
             Debug.Log(shopUI.activeSelf);
             Debug.Log("Exiting Shop");
             shopUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }    
         else if (Input.GetKeyDown(KeyCode.B) && !shopUI.activeSelf)
         {
             Debug.Log(shopUI.activeSelf);
             Debug.Log("Entering Shop");
             shopUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
     }
