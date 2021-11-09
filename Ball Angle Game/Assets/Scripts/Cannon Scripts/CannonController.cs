@@ -20,6 +20,7 @@ public class CannonController : MonoBehaviour
     private float rotY;
     private float rotX;
     private float nextTimeToFire = 0f;
+    public bool cannonLock;
     void Start()
     {
         // Instantiate objects
@@ -63,7 +64,7 @@ public class CannonController : MonoBehaviour
         transform.rotation = localRotation;
 
         // Reloader logic
-        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire && cannonLock == false)
         {
             // Set the next time to fire, call the reload slider, and fire the cannon.
             nextTimeToFire = Time.time + fireRate;

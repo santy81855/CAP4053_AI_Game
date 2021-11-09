@@ -7,15 +7,34 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    public int[,] shopItems = new int[5,5];
+    public int[,] shopItems = new int[5, 5];
     public float coins;
     public TMP_Text coinsText;
     public TMP_Text q1;
     public TMP_Text q2;
     public TMP_Text[] quantityDisplay;
 
+    #region Singleton
+    private static ShopManager instance;
+
+    public static ShopManager Instance { get { return instance; } }
+
+
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+
+
+
+
         quantityDisplay = new TMP_Text[3];
         // ID
         shopItems[1, 1] = 1;
@@ -37,6 +56,8 @@ public class ShopManager : MonoBehaviour
 
 
     }
+
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -66,5 +87,11 @@ public class ShopManager : MonoBehaviour
         shopItems[3, index]--;
         Debug.Log(shopItems[3, index]);
         quantityDisplay[index].text = shopItems[3, index].ToString();
+    }
+
+    public void addCoins()
+    {
+        coins += 10;
+        coinsText.text = "Coins: " + coins.ToString();
     }
 }
