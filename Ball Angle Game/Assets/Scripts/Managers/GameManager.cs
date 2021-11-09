@@ -10,7 +10,12 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     public static GameManager Instance { get { return instance; } }
-
+    public GameObject originalObject;
+    public GameObject fracturedObject;
+    public float destroyDelay;
+    public float minForce;
+    public float maxForce;
+    public float radius;
 
     private void Awake()
     {
@@ -56,11 +61,46 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Explode()
+    {
+        foreach (Transform t in transform)
+        {
+            var rb = t.GetComponent<Rigidbody>();
+
+            if (rb != null) 
+            {
+                rb.AddExplosionForce (Random.Range(minForce, maxForce), transform.position, radius);
+            }
+
+            Destroy (t.gameObject, destroyDelay);
+        }
+    }
+
+    // function that needs to be called whenever the cannon needs to explode
+    public void SpawnFracturedObject()
+    {
+        
+        GameObject fractObj = Instantiate (fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
+        Explode();
+        Destroy(originalObject);
+    }
+
     public void LostLevel()
     {
+        // start a coroutine so that we can wait a couple of seconds before the level lost UI
+        // pops up
+        StartCoroutine(waiter());
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        // when the person loses we want to shatter the cannon
+        SpawnFracturedObject();
+        loseAudio.Play();
+        yield return new WaitForSecondsRealtime(1);
         Debug.Log("LEVEL LOST! TRY AGAIN!");
         lostLevelUI.SetActive(true);
-        loseAudio.Play();
     }
 
     public void PowerUp(int powerIndex)

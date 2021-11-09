@@ -27,7 +27,7 @@ public class Shatter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Explode();
+        //Explode();
     }
 
     // Update is called once per frame
