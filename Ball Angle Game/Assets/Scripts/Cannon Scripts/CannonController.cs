@@ -42,6 +42,7 @@ public class CannonController : MonoBehaviour
         {
             Cursor.visible = (true);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
 

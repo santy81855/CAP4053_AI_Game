@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Entering Shop");
             shopUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-            cannon.cannonLock = false;
+            Cursor.visible = true;
+            cannon.cannonLock = true;
         }
 
     }
