@@ -7,6 +7,16 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
+    /// <summary>
+    /// IMPORTANT!!!
+    /// There are two quantity counters that we are keeping track of. The first one is in the shop itself and the other
+    /// is at the corner of the screen when the shop is off. In-Shop quantity counter is controlled by the 'ButtonInfo.cs' script.
+    /// In-Scene quantity counter is controlled by the quantityDisplay array with indexes 1, 2, 3, and 4 being each powerup.
+    /// </summary>
+
+
+
+    // Initialize variables
     public int[,] shopItems = new int[5, 5];
     public float coins;
     public TMP_Text coinsText;
@@ -14,6 +24,7 @@ public class ShopManager : MonoBehaviour
     public TMP_Text q2;
     public TMP_Text[] quantityDisplay;
 
+    // Singleton
     #region Singleton
     private static ShopManager instance;
 
@@ -31,11 +42,7 @@ public class ShopManager : MonoBehaviour
             instance = this;
         }
 
-
-
-
-
-        quantityDisplay = new TMP_Text[3];
+        
         // ID
         shopItems[1, 1] = 1;
         shopItems[1, 2] = 2;
@@ -53,39 +60,42 @@ public class ShopManager : MonoBehaviour
         shopItems[3, 2] = 0;
         shopItems[3, 3] = 0;
         shopItems[3, 4] = 0;
-
-
     }
-
     #endregion
-    // Start is called before the first frame update
+
     void Start()
     {
-        Debug.Log(quantityDisplay.Length);
+        // Set coins text
         coinsText.text = "Coins: " + coins.ToString();
+
+        // Set quantity text
+        quantityDisplay = new TMP_Text[3];
         quantityDisplay[1] = q1;
         quantityDisplay[2] = q2;
     }
 
     public void Buy()
     {
-        Debug.Log("ITEM PRESSED");
+        // Find which button was pressed out of the shop.
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
+        // If we have sufficient coins to purchase the item, buy the item.
         if (coins >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID])
         {
+            // Buy and set coins
             coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID];
+            coinsText.text = "Coins: " + coins.ToString();
+            
+            // Increase quantity and set the quantity counters to the correct number.
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().itemID]++;
-            coinsText.text = "Coins: " + coins.ToString();     
-            ButtonRef.GetComponent<ButtonInfo>().quantityText.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().itemID].ToString();
             quantityDisplay[ButtonRef.GetComponent<ButtonInfo>().itemID].text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().itemID].ToString();
         }
     }
 
+    // Consumes a powerup charge.
     public void ConsumeCharge(int index)
     {
         shopItems[3, index]--;
-        Debug.Log(shopItems[3, index]);
         quantityDisplay[index].text = shopItems[3, index].ToString();
     }
 
