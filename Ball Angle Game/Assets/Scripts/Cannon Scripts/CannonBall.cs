@@ -7,13 +7,16 @@ public class CannonBall : MonoBehaviour
     // Initialize variables
     [SerializeField] float despawnTime = 3f;
 
+    private ShopManager shopManager;
     private GameManager gameManager;
     private bool hitEnemy = false;
-    
+
     void Start()
     {
         // Reference the GameManager Singleton.
         gameManager = GameManager.Instance;
+        shopManager = ShopManager.Instance;
+        
     }
 
     // Detects if there is a collision with an object and sends
@@ -32,6 +35,7 @@ public class CannonBall : MonoBehaviour
             enemy.GetComponent<StateManager>().enabled = false;
             enemy.die(despawnTime);
             hitEnemy = true;
+            shopManager.addCoins();
         }
         else
         {
