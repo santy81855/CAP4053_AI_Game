@@ -5,15 +5,28 @@ using UnityEngine.AI;
 
 public class EnemyRagdoll : MonoBehaviour
 {
-    Rigidbody rb;
+    public float radius = 2f;
+    public GameObject explosionEffect;
+    public float force = 2100f;
+    Rigidbody[] rigidbodies;
+    Collider[] colliders;
+
+    //Rigidbody rb;
     // Start is called before the first frame update
     // Sets the initial conditions for the character with the rigidbodies enabled,
     // coliders disabled and animator on.
     void Start()
     {
+        explosionEffect = Resources.Load("DustExplosion") as GameObject;
+        Debug.Log(explosionEffect);
         setRigidbodyState(true);
         setColliderState(false);
         GetComponent<Animator>().enabled = true;
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     // Function is called when the enemy has been shot. Disables animator and makes ragdoll
@@ -21,12 +34,12 @@ public class EnemyRagdoll : MonoBehaviour
     {
 
         GetComponent<Animator>().enabled = false;
-        setRigidbodyState(false);
-        setColliderState(true);
         //EnemyBehavior.getAgent().enabled = false;
+        setColliderState(true);
+        setRigidbodyState(false);
         GetComponent<StateManager>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
-        //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Explode();
         // Another check if the gameObject has not been deleted yet
         StartCoroutine(EnemyGone());
 
@@ -36,7 +49,7 @@ public class EnemyRagdoll : MonoBehaviour
     void setRigidbodyState(bool state)
     {
         // Contains all rigidbody limbs
-        Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
+        rigidbodies = GetComponentsInChildren<Rigidbody>();
 
         // Loops to turn on or off the limbs depending on if the character has been shot or not
         foreach (Rigidbody rigidbody in rigidbodies)
@@ -53,7 +66,7 @@ public class EnemyRagdoll : MonoBehaviour
     void setColliderState(bool state)
     {
         // Gets colliders for each limb
-        Collider[] colliders = GetComponentsInChildren<Collider>();
+        colliders = GetComponentsInChildren<Collider>();
 
         // Turns on or off the colliders for each limb
         foreach (Collider collider in colliders)
@@ -65,34 +78,33 @@ public class EnemyRagdoll : MonoBehaviour
         GetComponent<Collider>().enabled = !state;
     }
 
-    // For explosion physics after collision. Not currently working
-    /*void explode()
+    // For explosion physics after collision.
+    void Explode()
     {
-        if (collisionExplosion != null)
+        Debug.Log("Explode");
+        GameObject explosion = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Debug.Log("Transform: " + transform.position);
+        foreach (Rigidbody bodypart in rigidbodies)
         {
-            GameObject explosion = (GameObject)Instantiate(
-                collisionExplosion, transform.position, transform.rotation
-            );
-
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-
-            foreach (Collider closeObjects in colliders)
+            // Debug.Log("Colliders[" + nearbyObject +"]");
+            Rigidbody rb = bodypart.GetComponent<Rigidbody>();
+            /*if (rb != null)
             {
-                Rigidbody rigidbody = closeObjects.GetComponent<Rigidbody>();
-            }
+                Debug.Log("Adding Force to " + rb);
+                rb.AddExplosionForce(force, transform.position, radius, (float)ForceMode.Impulse);
+            }*/
 
-            if (rigidbody != null)
-            {
-                Rigidbody.AddExplosionForce(500f, transform.position, 50f);
-            }
-
-            Destroy(gameObject);
-            Destroy(explosion, 1f);
+            Vector3 direction = rb.transform.position - transform.position;
+            rb.AddForceAtPosition(direction.normalized, transform.position);
         }
-    }*/
+
+        Destroy(explosion, 2f);
+    }
     IEnumerator EnemyGone()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1000);
         if (gameObject != null)
         {
             //Destroy(EnemyBehavior());
