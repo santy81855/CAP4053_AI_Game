@@ -22,6 +22,8 @@ public class ShopManager : MonoBehaviour
     public TMP_Text coinsText;
     public TMP_Text q1;
     public TMP_Text q2;
+    public TMP_Text q3;
+    public TMP_Text q4;
     public TMP_Text[] quantityDisplay;
 
     // Singleton
@@ -69,9 +71,11 @@ public class ShopManager : MonoBehaviour
         coinsText.text = "Coins: " + coins.ToString();
 
         // Set quantity text
-        quantityDisplay = new TMP_Text[3];
+        quantityDisplay = new TMP_Text[5];
         quantityDisplay[1] = q1;
         quantityDisplay[2] = q2;
+        quantityDisplay[3] = q3;
+        quantityDisplay[4] = q4;
     }
 
     public void Buy()

@@ -38,9 +38,13 @@ public class GameManager : MonoBehaviour
     public GameObject treasure;
     public CannonController cannon;
     public GameObject shopUI;
+    public enum PowerState { REGULAR, BLAST, FREEZE };
+    public PowerState state = PowerState.REGULAR;
 
     public TMP_Text abilityCount1;
     public TMP_Text abilityCount2;
+    public TMP_Text abilityCount3;
+    public TMP_Text abilityCount4;
 
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
@@ -49,6 +53,8 @@ public class GameManager : MonoBehaviour
     private float ballHit = 0;
     private bool enableLock1 = false;
     private bool enableLock2 = false;
+    private bool enableLock3 = false;
+    private bool enableLock4 = false;
 
     void Start()
     {
@@ -70,14 +76,18 @@ public class GameManager : MonoBehaviour
             gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
             PowerUp(1);
         }
-            
-        /*
-            These PowerUps will be implemented at a different time
-        if (Input.GetKeyDown("Alpha3"))
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && (int.Parse(abilityCount3.text) != 0) && enableLock3 == false)
+        {
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
             PowerUp(2);
-        if (Input.GetKeyDown("Alpha4"))
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4) && (int.Parse(abilityCount4.text) != 0) && enableLock4 == false)
+        {
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
             PowerUp(3);
-        */
+        }
 
         if (Input.GetKeyDown(KeyCode.B) && shopUI.activeSelf)
         {
@@ -155,10 +165,16 @@ public class GameManager : MonoBehaviour
         //-------------------------------
         // 0 -> Fast Fire Rate
         // 1 -> Bigger Cannon Balls
+        // 2 -> Explosive Cannon Balls
+        // 3 -> AOE Freeze Cannon Balls
         if (powerIndex == 0)
             StartCoroutine(FastFireRate());
         else if (powerIndex == 1)
             StartCoroutine(BigBall());
+        else if (powerIndex == 2)
+            StartCoroutine(BlastBall());
+        else if (powerIndex == 3)
+            StartCoroutine(FreezeBall());
     }
 
     IEnumerator FastFireRate()
@@ -180,6 +196,26 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(12);
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
         enableLock2 = false;
+    }
+
+    IEnumerator BlastBall()
+    {
+        enableLock3 = true;
+        Debug.Log("POWERUP: BLAST BALL!!!");
+        state = PowerState.BLAST;
+        yield return new WaitForSecondsRealtime(7);
+        state = PowerState.REGULAR;
+        enableLock3 = false;
+    }
+
+    IEnumerator FreezeBall()
+    {
+        enableLock4 = true;
+        Debug.Log("POWERUP: FREEZE BALL!!!");
+        state = PowerState.FREEZE;
+        yield return new WaitForSecondsRealtime(7);
+        state = PowerState.REGULAR;
+        enableLock4 = false;
     }
 
     public void UpdateAccuracy(bool hit)
