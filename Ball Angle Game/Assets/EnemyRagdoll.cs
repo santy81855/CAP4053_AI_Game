@@ -100,7 +100,7 @@ public class EnemyRagdoll : MonoBehaviour
     }
     IEnumerator EnemyGone()
     {
-        yield return new WaitForSecondsRealtime(1000);
+        yield return new WaitForSecondsRealtime(7);
         if (gameObject != null)
         {
             //Destroy(EnemyBehavior());
