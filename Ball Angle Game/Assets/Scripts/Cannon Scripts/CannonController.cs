@@ -13,7 +13,7 @@ public class CannonController : MonoBehaviour
     public float firePower;
     public float fireRate = 2f;
     public int powerMultiplier = 100;
-    public float mouseSensitivity = 100.0f;
+    public float mouseSensitivity = 50.0f;
 
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;

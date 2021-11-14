@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyRagdoll : MonoBehaviour
 {
-    public float radius = 2f;
+    public float radius = 3f;
     public GameObject explosionEffect;
     public float force = 2100f;
     Rigidbody[] rigidbodies;
@@ -84,20 +84,16 @@ public class EnemyRagdoll : MonoBehaviour
         Debug.Log("Explode");
         GameObject explosion = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
 
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         Debug.Log("Transform: " + transform.position);
         foreach (Rigidbody bodypart in rigidbodies)
         {
-            // Debug.Log("Colliders[" + nearbyObject +"]");
-            Rigidbody rb = bodypart.GetComponent<Rigidbody>();
-            /*if (rb != null)
+            Debug.Log("body" + bodypart);
+            if (bodypart != null)
             {
-                Debug.Log("Adding Force to " + rb);
-                rb.AddExplosionForce(force, transform.position, radius, (float)ForceMode.Impulse);
-            }*/
-
-            Vector3 direction = rb.transform.position - transform.position;
-            rb.AddForceAtPosition(direction.normalized, transform.position);
+                Debug.Log("Adding Force to " + bodypart);
+                bodypart.AddExplosionForce(force/2, transform.position, radius, (float)ForceMode.Impulse);
+                bodypart.AddRelativeForce(Vector3.back * 2 * force);
+            }
         }
 
         Destroy(explosion, 2f);
