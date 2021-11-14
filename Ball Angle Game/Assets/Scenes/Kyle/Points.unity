@@ -51793,18 +51793,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7378039959745576448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7684682003490650148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75cbd5698a8f04e4dbcb4b045b07a4d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7378039960488876374
 Transform:
   m_ObjectHideFlags: 0
@@ -53333,7 +53321,6 @@ GameObject:
   - component: {fileID: 7056763748804321950}
   - component: {fileID: 6215375030811553083}
   - component: {fileID: 8189098699180874225}
-  - component: {fileID: 7378039959745576448}
   m_Layer: 0
   m_Name: CannonComponents
   m_TagString: Untagged
