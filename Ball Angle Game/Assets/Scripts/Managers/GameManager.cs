@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //winAudio = AudioManager.Instance.WinAudio;
-        //loseAudio = AudioManager.Instance.LoseAudio;
+        winAudio = AudioManager.Instance.WinAudio;
+        loseAudio = AudioManager.Instance.LoseAudio;
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 

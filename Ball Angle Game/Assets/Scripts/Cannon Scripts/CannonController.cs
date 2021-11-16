@@ -13,7 +13,7 @@ public class CannonController : MonoBehaviour
     public float firePower;
     public float fireRate = 2f;
     public int powerMultiplier = 100;
-    public float mouseSensitivity = 50.0f;
+    public float mouseSensitivity = 100.0f;
 
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;
@@ -23,7 +23,7 @@ public class CannonController : MonoBehaviour
     void Start()
     {
         // Instantiate objects
-        //fireSound = AudioManager.Instance.FireAudio;
+        fireSound = AudioManager.Instance.FireAudio;
         reloadLoader = GameManager.Instance.GetComponent<ReloadLoader>();
 
         // Lock cursor and set up math
@@ -83,6 +83,6 @@ public class CannonController : MonoBehaviour
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
-        //fireSound.Play();
+        fireSound.Play();
     }
 }
