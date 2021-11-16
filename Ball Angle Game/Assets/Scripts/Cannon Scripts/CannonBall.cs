@@ -57,6 +57,7 @@ public class CannonBall : MonoBehaviour
                 EnemyRagdoll enemy = nearbyObject.transform.GetComponent<EnemyRagdoll>();
                 if (enemy != null)
                 {
+                    // if (enemy.enemyHealth == 0)
                     enemy.GetComponent<StateManager>().enabled = false;
                     enemy.die(despawnTime);
                     hitEnemy = true;

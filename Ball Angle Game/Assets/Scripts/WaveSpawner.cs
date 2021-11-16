@@ -7,7 +7,7 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    
+
     [System.Serializable]
 
     // Predefined variables for each wave
@@ -19,8 +19,8 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
     }
     // all variables that need to be imported in the unity editor
-    public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING }; 
-    public GameObject waveText; 
+    public enum SpawnState { SPAWNING, WAITING, COUNTING, ENDING };
+    public GameObject waveText;
     public GameObject bigBall;
     public GameObject fastFire;
     public Transform bigBallSpawn;
@@ -36,7 +36,7 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     private int nextWave = 0;
     // Time between waves defaults to 5 seconds, but it can be changed in editor
-    public float timeBetweenWaves = 5f; 
+    public float timeBetweenWaves = 5f;
     // the amount of time for a wave to start.
     public float waveCountdown;
 
@@ -46,7 +46,7 @@ public class WaveSpawner : MonoBehaviour
     private int ffFlag = 0;
     // big ball powerup flag
     private int bbFlag = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +56,7 @@ public class WaveSpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         if (state == SpawnState.ENDING)
         {
             return;
@@ -123,13 +123,13 @@ public class WaveSpawner : MonoBehaviour
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
             state = SpawnState.ENDING;
-            
+
         }
         else
         {
             nextWave++;
         }
-        
+
     }
 
     bool EnemyIsAlive()
@@ -138,7 +138,7 @@ public class WaveSpawner : MonoBehaviour
         if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            
+
             // When the timer is up, check if there are any enemies left.
             if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
@@ -168,6 +168,13 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
+        // For health system
+        // Read which enemy is coming through
+        // Instantiate correct enemy
+        // Write correct stats
+
+
+
         // randomly determine which of the 5 locations to spawn each enemy
         int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
