@@ -26,7 +26,7 @@ public class EnemyRagdoll : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
     }
 
     // Function is called when the enemy has been shot. Disables animator and makes ragdoll
@@ -91,7 +91,7 @@ public class EnemyRagdoll : MonoBehaviour
             if (bodypart != null)
             {
                 Debug.Log("Adding Force to " + bodypart);
-                bodypart.AddExplosionForce(force/2, transform.position, radius, (float)ForceMode.Impulse);
+                bodypart.AddExplosionForce(force / 2, transform.position, radius, (float)ForceMode.Impulse);
                 bodypart.AddRelativeForce(Vector3.back * 2 * force);
             }
         }
