@@ -14,12 +14,13 @@ public class CannonController : MonoBehaviour
     public float fireRate = 2f;
     public int powerMultiplier = 100;
     public float mouseSensitivity = 100.0f;
-    
+
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;
     private float rotY;
     private float rotX;
     private float nextTimeToFire = 0f;
+    public bool cannonLock;
     void Start()
     {
         // Instantiate objects
@@ -36,6 +37,15 @@ public class CannonController : MonoBehaviour
 
     void Update()
     {
+
+        if (Pause_Menu.GameIsPaused == true)
+        {
+            Cursor.visible = (true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+
         // Get input from mouse
         float mouseX = Input.GetAxis("Mouse X") * 20;
         float mouseY = -Input.GetAxis("Mouse Y") * 20;
@@ -55,7 +65,7 @@ public class CannonController : MonoBehaviour
         transform.rotation = localRotation;
 
         // Reloader logic
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire && cannonLock == false)
         {
             // Set the next time to fire, call the reload slider, and fire the cannon.
             nextTimeToFire = Time.time + fireRate;
@@ -71,7 +81,6 @@ public class CannonController : MonoBehaviour
         cannonballRB = cannonBallCopy.GetComponent<Rigidbody>();
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
-
         fireSound.Play();
     }
 }
