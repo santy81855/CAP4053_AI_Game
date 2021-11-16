@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // function to explode the shatter_cannon prefab
     public void Explode()
     {
         foreach (Transform t in transform)
@@ -136,19 +137,22 @@ public class GameManager : MonoBehaviour
     // function that needs to be called whenever the cannon needs to explode
     public void SpawnFracturedObject()
     {
+        // spawn the fractured version of the cannon
+        GameObject fractObj = Instantiate (fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
+        // explode the cannon
 
-        GameObject fractObj = Instantiate(fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
         Explode();
+        // remove the original cannon
         Destroy(originalObject);
     }
 
     public void LostLevel()
     {
-        // start a coroutine so that we can wait a couple of seconds before the level lost UI
-        // pops up
+        // start a coroutine so that we can wait a couple of seconds before the level lost UI pops up
         StartCoroutine(waiter());
     }
 
+    // coroutine to wait a few seconds between operations
     IEnumerator waiter()
     {
         yield return new WaitForSecondsRealtime(1);

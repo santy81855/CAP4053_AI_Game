@@ -16,7 +16,7 @@ public class ButtonInfo : MonoBehaviour
     // (most of the time they are only going to be zero).
     void Start()
     {
-        priceText.text = "Price: $" + shopManager.GetComponent<ShopManager>().shopItems[2, itemID].ToString();
+        priceText.text = "$" + shopManager.GetComponent<ShopManager>().shopItems[2, itemID].ToString();
         quantityText.text = shopManager.GetComponent<ShopManager>().shopItems[3, itemID].ToString();
     }
 

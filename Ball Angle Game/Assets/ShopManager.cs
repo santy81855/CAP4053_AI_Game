@@ -68,7 +68,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         // Set coins text
-        coinsText.text = "Coins: " + coins.ToString();
+        coinsText.text = coins.ToString();
 
         // Set quantity text
         quantityDisplay = new TMP_Text[5];
@@ -88,7 +88,7 @@ public class ShopManager : MonoBehaviour
         {
             // Buy and set coins
             coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID];
-            coinsText.text = "Coins: " + coins.ToString();
+            coinsText.text = coins.ToString();
             
             // Increase quantity and set the quantity counters to the correct number.
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().itemID]++;
@@ -106,6 +106,6 @@ public class ShopManager : MonoBehaviour
     public void addCoins()
     {
         coins += 10;
-        coinsText.text = "Coins: " + coins.ToString();
+        coinsText.text = coins.ToString();
     }
 }
