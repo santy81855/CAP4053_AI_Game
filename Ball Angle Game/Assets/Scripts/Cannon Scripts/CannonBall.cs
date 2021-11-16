@@ -19,7 +19,7 @@ public class CannonBall : MonoBehaviour
         // Reference the GameManager Singleton.
         gameManager = GameManager.Instance;
         shopManager = ShopManager.Instance;
-        
+
     }
 
 
@@ -57,6 +57,7 @@ public class CannonBall : MonoBehaviour
                 EnemyRagdoll enemy = nearbyObject.transform.GetComponent<EnemyRagdoll>();
                 if (enemy != null)
                 {
+                    // if (enemy.enemyHealth == 0)
                     enemy.GetComponent<StateManager>().enabled = false;
                     enemy.die(despawnTime);
                     hitEnemy = true;
@@ -80,14 +81,13 @@ public class CannonBall : MonoBehaviour
                     hitEnemy = true;
                     shopManager.addCoins();
                     gameManager.UpdateAccuracy(hitEnemy);
-                    Destroy(gameObject);
                 }
             }
         }
 
 
 
-        
+
     }
 
     // Coroutine that despawns the ball after a certain amount of time.
@@ -103,5 +103,6 @@ public class CannonBall : MonoBehaviour
         agent.isStopped = true;
         yield return new WaitForSecondsRealtime(5);
         agent.isStopped = false;
+        Destroy(gameObject);
     }
 }

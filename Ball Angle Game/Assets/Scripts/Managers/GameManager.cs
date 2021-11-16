@@ -74,18 +74,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && (int.Parse(abilityCount2.text) != 0) && enableLock2 == false)
         {
             gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
+
             PowerUp(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && (int.Parse(abilityCount3.text) != 0) && enableLock3 == false)
         {
-            gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(3);
             PowerUp(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4) && (int.Parse(abilityCount4.text) != 0) && enableLock4 == false)
         {
-            gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
+            gameObject.GetComponent<ShopManager>().ConsumeCharge(4);
             PowerUp(3);
         }
 
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
             shopUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             cannon.cannonLock = false;
-        }    
+        }
         else if (Input.GetKeyDown(KeyCode.B) && !shopUI.activeSelf)
         {
             Debug.Log("Entering Shop");
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
     }
     public void CompleteLevel()
     {
-        
+
         Debug.Log("LEVEL WON!");
         waveText.SetActive(false);
         accuracyText.SetActive(false);
@@ -124,12 +125,12 @@ public class GameManager : MonoBehaviour
         {
             var rb = t.GetComponent<Rigidbody>();
 
-            if (rb != null) 
+            if (rb != null)
             {
-                rb.AddExplosionForce (Random.Range(minForce, maxForce), transform.position, radius);
+                rb.AddExplosionForce(Random.Range(minForce, maxForce), transform.position, radius);
             }
 
-            Destroy (t.gameObject, destroyDelay);
+            Destroy(t.gameObject, destroyDelay);
         }
     }
 
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
         // spawn the fractured version of the cannon
         GameObject fractObj = Instantiate (fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
         // explode the cannon
+
         Explode();
         // remove the original cannon
         Destroy(originalObject);

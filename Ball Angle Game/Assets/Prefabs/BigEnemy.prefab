@@ -3229,7 +3229,7 @@ GameObject:
   - component: {fileID: 8820701993852128080}
   - component: {fileID: 8518669766695485495}
   m_Layer: 0
-  m_Name: FinalEnemy
+  m_Name: BigEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3372,7 +3372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8c4cb11db04c94e8afc9e98fed217c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 0
   zone1XStart: 17
   zone1XEnd: -10
   zone1YStart: -10
@@ -3385,6 +3384,7 @@ MonoBehaviour:
   zone3XEnd: 110
   zone3YStart: -10
   zone3YEnd: 10
+  agent: {fileID: 0}
 --- !u!1 &8820707534522858721
 GameObject:
   m_ObjectHideFlags: 0
@@ -7970,7 +7970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManagerRef: {fileID: 8821617299532854131}
   targetState: {fileID: 8821617298367634263}
-  gameManager: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!1 &8822289519671294197
 GameObject:
   m_ObjectHideFlags: 0

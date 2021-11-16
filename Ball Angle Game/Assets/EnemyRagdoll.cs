@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyRagdoll : MonoBehaviour
 {
+    //public int enemyHealth;
     Rigidbody rb;
     // Start is called before the first frame update
     // Sets the initial conditions for the character with the rigidbodies enabled,
