@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
     }
 
     #endregion
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
     public void SpawnFracturedObject()
     {
         // spawn the fractured version of the cannon
-        GameObject fractObj = Instantiate (fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
+        GameObject fractObj = Instantiate(fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
         // explode the cannon
 
         Explode();
