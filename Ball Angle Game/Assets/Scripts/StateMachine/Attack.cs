@@ -7,7 +7,7 @@ public class Attack : State
 {
     public StateManager stateManagerRef;
     public Target targetState;
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     private void Start()
     {
@@ -16,6 +16,7 @@ public class Attack : State
     // Still haven't finished this class yet. Waiting to implement attack feature.
     public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
     {
+        Debug.Log("You should lose now");
         stateManagerRef.enabled = false;
         OnTriggerEnter();
 

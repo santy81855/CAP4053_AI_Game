@@ -11,7 +11,6 @@ public class Target : State
 
     // Create other checking variables
     public LayerMask whatIsObj;
-    public bool playerInAttackRange;
     public float attackRange;
 
     public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
@@ -25,7 +24,7 @@ public class Target : State
         {
             // Roll a dice to go to the BAW state, otherwise return this
             return bawState;
-            
+
         }
         // Check if the enemy is in the attack range of the video games.
         else if (Physics.CheckSphere(transform.position, attackRange, whatIsObj))
@@ -40,7 +39,7 @@ public class Target : State
             agent.SetDestination(target.position);
             FaceTarget(target);
             return this;
-        }   
+        }
     }
 
     // FaceTarget() makes the enemy always face the objective.
@@ -51,5 +50,11 @@ public class Target : State
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

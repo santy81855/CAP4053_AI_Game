@@ -14,7 +14,6 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform enemy;
         public int count;
         public float rate;
     }
@@ -47,11 +46,32 @@ public class WaveSpawner : MonoBehaviour
     // big ball powerup flag
     private int bbFlag = 0;
 
+    public LevelArray levelArray;
+
+    public int numLevel;
+
+    private int arrayCount = 0;
+    private string[] spawnArray;
+
+    public Transform regularEnemy;
+    public Transform tankEnemy;
+    public Transform speedEnemy;
+    private string[] waveArrayOne = new string[] { "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "SPEED", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "REGULAR" };
+    public string[] waveArrayTwo;
+    public string[] waveArrayThree;
+
     // Start is called before the first frame update
     void Start()
     {
         waveCountdown = timeBetweenWaves;
         gameManager = gameObject.GetComponent<GameManager>();
+
+        if (numLevel == 1)
+            spawnArray = waveArrayOne;
+        else if (numLevel == 2)
+            spawnArray = levelArray.waveArrayTwo;
+        else if (numLevel == 3)
+            spawnArray = levelArray.waveArrayThree;
     }
 
     // Update is called once per frame
@@ -157,50 +177,50 @@ public class WaveSpawner : MonoBehaviour
         // Loop through and spawn enemies
         for (int i = 0; i < _wave.count; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            Debug.Log("Count is : " + i);
+            if (spawnArray[arrayCount] == "REGULAR")
+                SpawnEnemy(regularEnemy);
+            else if (spawnArray[arrayCount] == "TANK")
+                SpawnEnemy(tankEnemy);
+            else if (spawnArray[arrayCount] == "SPEED")
+                SpawnEnemy(speedEnemy);
+
+            arrayCount++;
             yield return new WaitForSeconds(1f / _wave.rate);
         }
         // set the state to waiting once the enemies have been spawned
         state = SpawnState.WAITING;
-
         yield break;
     }
 
     void SpawnEnemy(Transform _enemy)
     {
-        // For health system
-        // Read which enemy is coming through
-        // Instantiate correct enemy
-        // Write correct stats
-
-
-
         // randomly determine which of the 5 locations to spawn each enemy
         int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
 
         }
         else if (spawnNumber == 2)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn2.transform.position, spawn2.transform.rotation);
         }
         else if (spawnNumber == 3)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
         }
         else if (spawnNumber == 4)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn4.transform.position, spawn4.transform.rotation);
         }
         else if (spawnNumber == 5)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn5.transform.position, spawn5.transform.rotation);
         }
     }

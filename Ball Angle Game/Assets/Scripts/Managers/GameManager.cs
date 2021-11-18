@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
     }
+
 
     #endregion
     public GameObject cannonBall;
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         loseAudio = AudioManager.Instance.LoseAudio;
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
     }
+
 
     private void Update()
     {
@@ -223,7 +224,6 @@ public class GameManager : MonoBehaviour
         state = PowerState.REGULAR;
         enableLock4 = false;
     }
-
     public void UpdateAccuracy(bool hit)
     {
         if (hit)
