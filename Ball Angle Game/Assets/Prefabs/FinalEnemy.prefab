@@ -3329,7 +3329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 8821617298367634263}
-  fpsCam: {fileID: 0}
 --- !u!195 &8821617299532854130
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3359,7 +3358,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8820701993852128081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447618cb45dadff449c7002e6aafd2a6, type: 3}
   m_Name: 
@@ -7926,7 +7925,7 @@ MonoBehaviour:
   bawState: {fileID: 8821617298043039031}
   whatIsObj:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8
   playerInAttackRange: 0
   attackRange: 5
 --- !u!1 &8821617299333821663
@@ -7974,7 +7973,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManagerRef: {fileID: 8821617299532854131}
   targetState: {fileID: 8821617298367634263}
-  gameManager: {fileID: 0}
 --- !u!1 &8822289519671294197
 GameObject:
   m_ObjectHideFlags: 0
