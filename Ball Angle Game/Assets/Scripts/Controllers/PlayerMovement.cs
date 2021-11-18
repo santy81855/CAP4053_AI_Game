@@ -12,20 +12,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(0f, 0f, zPress());
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        // This would be the code for full wasd movement.
-        // But we only get z axis for this project for left and right.
-        //float x = Input.GetAxis("Horizontal");
-        //float z = Input.GetAxis("Vertical");
-
-        //Vector3 move = transform.right * x + transform.forward * z;
-
-        //controller.Move(move * speed * Time.deltaTime);
+        // get input for movement
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        // get the direction being faced by the camera
+        float cameraFacing = Camera.main.transform.eulerAngles.y;
+        // create the original vector holding the direction to move in
+        Vector3 inputVector = new Vector3(x, 0, z);
+        // rotate the original vector relative to the direction faced by the camera
+        Vector3 turnedInputVector = Quaternion.Euler(0, cameraFacing, 0) * inputVector;
+        // move the cannon
+        controller.Move(turnedInputVector * speed * Time.deltaTime);
     }
-
+    // get the buttons for movement
     public float zPress()
     {
         if (Input.GetKey("a"))
