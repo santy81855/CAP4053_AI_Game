@@ -53510,7 +53510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164754358102473021}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -6.7268906, y: 2.59, z: -20.69}
+  m_LocalPosition: {x: -6.7268906, y: 2.66, z: -20.69}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 8881198261095095893}
@@ -56159,7 +56159,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 1.65, y: 0.34, z: 1.3}
 --- !u!4 &5300616410802825902
 Transform:
   m_ObjectHideFlags: 0
