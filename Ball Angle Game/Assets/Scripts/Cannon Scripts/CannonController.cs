@@ -22,6 +22,7 @@ public class CannonController : MonoBehaviour
     private float nextTimeToFire = 0f;
     public bool cannonLock;
     public bool xCameraBlock;;
+
     void Start()
     {
         // Instantiate objects
@@ -46,7 +47,6 @@ public class CannonController : MonoBehaviour
             Cursor.visible = true;
         }
 
-
         // Get input from mouse
         float mouseX = Input.GetAxis("Mouse X") * 20;
         float mouseY = -Input.GetAxis("Mouse Y") * 20;
@@ -59,7 +59,8 @@ public class CannonController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, -75, 75);
 
         // Left/Right (only for level 1 we restrict this movement)
-        if (xCameraBlock == false)
+
+        if (xCameraBlock == true)
             rotY = Mathf.Clamp(rotY, -115, 115);
 
         // Set starting angle of the cannon
