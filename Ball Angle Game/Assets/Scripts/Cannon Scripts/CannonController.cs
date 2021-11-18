@@ -46,7 +46,6 @@ public class CannonController : MonoBehaviour
             Cursor.visible = true;
         }
 
-
         // Get input from mouse
         float mouseX = Input.GetAxis("Mouse X") * 20;
         float mouseY = -Input.GetAxis("Mouse Y") * 20;
@@ -58,7 +57,7 @@ public class CannonController : MonoBehaviour
         // Up/Down
         rotX = Mathf.Clamp(rotX, -75, 75);
 
-        // Left/Right
+        // Left/Right (only for level 1 we restrict this movement)
         if (xCameraBlock == true)
             rotY = Mathf.Clamp(rotY, -115, 115);
 
