@@ -21,6 +21,7 @@ public class CannonController : MonoBehaviour
     private float rotX;
     private float nextTimeToFire = 0f;
     public bool cannonLock;
+    public int currentLevel;
     void Start()
     {
         // Instantiate objects
@@ -57,8 +58,9 @@ public class CannonController : MonoBehaviour
         // Up/Down
         rotX = Mathf.Clamp(rotX, -75, 75);
 
-        // Left/Right
-        rotY = Mathf.Clamp(rotY, -115, 115);
+        // Left/Right (only for level 1 we restrict this movement)
+        if (currentLevel == 1)
+            rotY = Mathf.Clamp(rotY, -115, 115);
 
         // Set starting angle of the cannon
         Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
