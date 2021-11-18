@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     private bool enableLock3 = false;
     private bool enableLock4 = false;
 
+    private bool hasExploded = false;
+
     void Start()
     {
         winAudio = AudioManager.Instance.WinAudio;
@@ -158,12 +160,16 @@ public class GameManager : MonoBehaviour
     IEnumerator waiter()
     {
         yield return new WaitForSecondsRealtime(1);
+        if (!hasExploded)
+        {
+            hasExploded = true;
+            SpawnFracturedObject();
+            loseAudio.Play();
+            yield return new WaitForSecondsRealtime(1);
+            Debug.Log("LEVEL LOST! TRY AGAIN!");
+            lostLevelUI.SetActive(true);
+        }
         // when the person loses we want to shatter the cannon
-        SpawnFracturedObject();
-        loseAudio.Play();
-        yield return new WaitForSecondsRealtime(1);
-        Debug.Log("LEVEL LOST! TRY AGAIN!");
-        lostLevelUI.SetActive(true);
     }
 
     public void PowerUp(int powerIndex)
