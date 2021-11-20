@@ -10,7 +10,8 @@ public class ObstacleAnimation : MonoBehaviour {
 	private float randomOffset;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		randomOffset = 0;
 	}
 	
