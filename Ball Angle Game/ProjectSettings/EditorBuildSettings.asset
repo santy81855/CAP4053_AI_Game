@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Santy/prototype2.unity
     guid: 65a268aecde82cd4bbab81476cced0bf
+  - enabled: 0
+    path: Assets/Scenes/Joel/PauseFix.unity
+    guid: c287448d830fa334a88ae8b644bc16ae
   m_configObjects: {}

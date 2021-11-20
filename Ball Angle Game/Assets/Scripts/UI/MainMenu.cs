@@ -8,16 +8,22 @@ public class MainMenu : MonoBehaviour
     // Load the first level
     public void PlayLevelOne()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void PlayLevelTwo()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void PlayLevelThree()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
