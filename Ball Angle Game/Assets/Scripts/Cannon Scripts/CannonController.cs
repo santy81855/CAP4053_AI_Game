@@ -38,14 +38,6 @@ public class CannonController : MonoBehaviour
     void Update()
     {
 
-        if (Pause_Menu.GameIsPaused == true)
-        {
-            Cursor.visible = (true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-
         // Get input from mouse
         float mouseX = Input.GetAxis("Mouse X") * 20;
         float mouseY = -Input.GetAxis("Mouse Y") * 20;
