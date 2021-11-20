@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Joel/Menu Modified.unity
+    guid: 7077621355d703f4895abcca356c5c41
+  - enabled: 0
     path: Assets/Scenes/Kyle/Menu.unity
     guid: 925d9e1617ba8704bb726b94e3142897
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Santy/prototype2.unity
     guid: 65a268aecde82cd4bbab81476cced0bf
   m_configObjects: {}
