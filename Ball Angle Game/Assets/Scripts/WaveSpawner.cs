@@ -7,20 +7,19 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    
+
     [System.Serializable]
 
     // Predefined variables for each wave
     public class Wave
     {
         public string name;
-        public Transform enemy;
         public int count;
         public float rate;
     }
     // all variables that need to be imported in the unity editor
-    public enum SpawnState {  SPAWNING, WAITING, COUNTING, ENDING }; 
-    public GameObject waveText; 
+    public enum SpawnState { SPAWNING, WAITING, COUNTING, ENDING };
+    public GameObject waveText;
     public GameObject bigBall;
     public GameObject fastFire;
     public Transform bigBallSpawn;
@@ -36,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     private int nextWave = 0;
     // Time between waves defaults to 5 seconds, but it can be changed in editor
-    public float timeBetweenWaves = 5f; 
+    public float timeBetweenWaves = 5f;
     // the amount of time for a wave to start.
     public float waveCountdown;
 
@@ -46,17 +45,38 @@ public class WaveSpawner : MonoBehaviour
     private int ffFlag = 0;
     // big ball powerup flag
     private int bbFlag = 0;
-    
+
+    public LevelArray levelArray;
+
+    public int numLevel;
+
+    private int arrayCount = 0;
+    private string[] spawnArray;
+
+    public Transform regularEnemy;
+    public Transform tankEnemy;
+    public Transform speedEnemy;
+    private string[] waveArrayOne = new string[] { "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "SPEED", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "REGULAR" };
+    public string[] waveArrayTwo;
+    public string[] waveArrayThree;
+
     // Start is called before the first frame update
     void Start()
     {
         waveCountdown = timeBetweenWaves;
         gameManager = gameObject.GetComponent<GameManager>();
+
+        if (numLevel == 1)
+            spawnArray = waveArrayOne;
+        else if (numLevel == 2)
+            spawnArray = levelArray.waveArrayTwo;
+        else if (numLevel == 3)
+            spawnArray = levelArray.waveArrayThree;
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         if (state == SpawnState.ENDING)
         {
             return;
@@ -123,13 +143,13 @@ public class WaveSpawner : MonoBehaviour
             nextWave = 0;
             Debug.Log("All waves complete! Looping...");
             state = SpawnState.ENDING;
-            
+
         }
         else
         {
             nextWave++;
         }
-        
+
     }
 
     bool EnemyIsAlive()
@@ -138,7 +158,7 @@ public class WaveSpawner : MonoBehaviour
         if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            
+
             // When the timer is up, check if there are any enemies left.
             if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
@@ -157,12 +177,19 @@ public class WaveSpawner : MonoBehaviour
         // Loop through and spawn enemies
         for (int i = 0; i < _wave.count; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            Debug.Log("Count is : " + i);
+            if (spawnArray[arrayCount] == "REGULAR")
+                SpawnEnemy(regularEnemy);
+            else if (spawnArray[arrayCount] == "TANK")
+                SpawnEnemy(tankEnemy);
+            else if (spawnArray[arrayCount] == "SPEED")
+                SpawnEnemy(speedEnemy);
+
+            arrayCount++;
             yield return new WaitForSeconds(1f / _wave.rate);
         }
         // set the state to waiting once the enemies have been spawned
         state = SpawnState.WAITING;
-
         yield break;
     }
 
@@ -172,28 +199,28 @@ public class WaveSpawner : MonoBehaviour
         int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
 
         }
         else if (spawnNumber == 2)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn2.transform.position, spawn2.transform.rotation);
         }
         else if (spawnNumber == 3)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
         }
         else if (spawnNumber == 4)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn4.transform.position, spawn4.transform.rotation);
         }
         else if (spawnNumber == 5)
         {
-            //Debug.Log(spawnNumber);
+            Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn5.transform.position, spawn5.transform.rotation);
         }
     }

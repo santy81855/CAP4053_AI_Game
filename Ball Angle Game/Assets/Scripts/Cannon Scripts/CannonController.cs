@@ -20,6 +20,9 @@ public class CannonController : MonoBehaviour
     private float rotY;
     private float rotX;
     private float nextTimeToFire = 0f;
+    public bool cannonLock;
+    public bool xCameraBlock;;
+
     void Start()
     {
         // Instantiate objects
@@ -41,11 +44,7 @@ public class CannonController : MonoBehaviour
         {
             Cursor.visible = (true);
             Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = (false);
+            Cursor.visible = true;
         }
 
         // Get input from mouse
@@ -59,15 +58,17 @@ public class CannonController : MonoBehaviour
         // Up/Down
         rotX = Mathf.Clamp(rotX, -75, 75);
 
-        // Left/Right
-        rotY = Mathf.Clamp(rotY, -115, 115);
+        // Left/Right (only for level 1 we restrict this movement)
+
+        if (xCameraBlock == true)
+            rotY = Mathf.Clamp(rotY, -115, 115);
 
         // Set starting angle of the cannon
         Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
         transform.rotation = localRotation;
 
         // Reloader logic
-        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire && cannonLock == false)
         {
             // Set the next time to fire, call the reload slider, and fire the cannon.
             nextTimeToFire = Time.time + fireRate;

@@ -4,24 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cannon
-  - Fire
-  - GM
+  - Shootable
   - Enemy
   - Manager
-  - AudioManager
   - Event
+  - AudioManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - whatIsObj
   - Water
   - UI
-  - WhatIsGround
-  - WhatIsPlayer
-  - whatIsObj
-  - WhatIsItem
+  - 
+  - 
+  - Lighting
+  - Ground
+  - Postprocessing
   - 
   - 
   - 
@@ -42,9 +41,11 @@ TagManager:
   - 
   - 
   - 
-  - POLARIS RAYCAST
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

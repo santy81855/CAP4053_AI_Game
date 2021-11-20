@@ -30,14 +30,12 @@ public class BAW : State
                 {
                     myvec = new Vector3(0.0f, 0.0f, 20.0f);
                     agent.SetDestination(myEnemy.position + myvec);
-                    Debug.Log(agent.hasPath);
                 }
                 // If two, set the enemy destination 20f right of itself.
                 else
                 {
                     myvec = new Vector3(0.0f, 0.0f, -20.0f);
                     agent.SetDestination(myEnemy.position + myvec);
-                    Debug.Log(agent.hasPath);
                 }
 
                 // Disable the stateManager script for some time and then renable it to go back to the target state

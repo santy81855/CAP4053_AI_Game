@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class StateManager : MonoBehaviour
 {
     public State currentState;
-    public Camera fpsCam;
+    Camera fpsCam;
     Transform target;
     NavMeshAgent agent;
     Transform myEnemy;
@@ -15,12 +15,12 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         // Get needed variables at start
-        target = GameManager.Instance.player.transform;
+        target = GameManager.Instance.treasure.transform;
         agent = GetComponent<NavMeshAgent>();
         myEnemy = transform;
         fpsCam = Camera.main;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
