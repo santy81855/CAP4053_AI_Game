@@ -21,7 +21,7 @@ public class CannonController : MonoBehaviour
     private float rotX;
     private float nextTimeToFire = 0f;
     public bool cannonLock;
-    public bool xCameraBlock;;
+    public bool xCameraBlock;
 
     void Start()
     {
