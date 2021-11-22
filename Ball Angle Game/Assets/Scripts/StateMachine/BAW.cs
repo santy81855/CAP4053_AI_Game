@@ -41,7 +41,8 @@ public class BAW : State
                 // Disable the stateManager script for some time and then renable it to go back to the target state
                 stateManagerRef.enabled = false;
                 yield return new WaitForSecondsRealtime(3);
-                stateManagerRef.enabled = true;
+                if (myEnemy.GetComponent<StateManager>().isEnemyDead == false)
+                    stateManagerRef.enabled = true;
             }
         }
 

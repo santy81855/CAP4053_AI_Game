@@ -27,6 +27,7 @@ public class CannonBall : MonoBehaviour
     // data to the correct place.
     void OnCollisionEnter(Collision other)
     {
+
         if (gameManager.state == GameManager.PowerState.REGULAR)
         {
             // Start the despawn coroutine
@@ -38,6 +39,7 @@ public class CannonBall : MonoBehaviour
             // If it did hit an enemy, kill the enemy and mark good accuracy.
             if (enemy != null)
             {
+                enemy.GetComponent<StateManager>().isEnemyDead = true;
                 enemy.GetComponent<StateManager>().enabled = false;
                 enemy.die(despawnTime);
                 hitEnemy = true;
@@ -58,6 +60,7 @@ public class CannonBall : MonoBehaviour
                 if (enemy != null)
                 {
                     // if (enemy.enemyHealth == 0)
+                    enemy.GetComponent<StateManager>().isEnemyDead = true;
                     enemy.GetComponent<StateManager>().enabled = false;
                     enemy.die(despawnTime);
                     hitEnemy = true;
