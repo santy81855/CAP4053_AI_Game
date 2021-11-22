@@ -39,11 +39,19 @@ public class CannonBall : MonoBehaviour
             // If it did hit an enemy, kill the enemy and mark good accuracy.
             if (enemy != null)
             {
-                enemy.GetComponent<StateManager>().isEnemyDead = true;
-                enemy.GetComponent<StateManager>().enabled = false;
-                enemy.die(despawnTime);
-                hitEnemy = true;
-                shopManager.addCoins();
+                if (enemy.GetComponent<EnemyStats>().hp == 1)
+                {
+                    enemy.GetComponent<StateManager>().isEnemyDead = true;
+                    enemy.GetComponent<StateManager>().enabled = false;
+                    enemy.die(despawnTime);
+                    hitEnemy = true;
+                    shopManager.addCoins();
+                }
+                else
+                {
+                    enemy.GetComponent<EnemyStats>().hp--;
+                }
+
             }
             else
             {
