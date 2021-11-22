@@ -36,6 +36,8 @@ public class Target : State
         {
             // Stay on the Target state
             // Insert targeting code.
+            // Can potentially put something here that can make movement smarter.
+
             agent.SetDestination(target.position);
             FaceTarget(target);
             return this;

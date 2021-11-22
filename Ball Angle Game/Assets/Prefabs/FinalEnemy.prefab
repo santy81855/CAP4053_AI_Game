@@ -3329,6 +3329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 8821617298367634263}
+  isEnemyDead: 0
 --- !u!195 &8821617299532854130
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3339,7 +3340,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 5
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -7926,7 +7927,6 @@ MonoBehaviour:
   whatIsObj:
     serializedVersion: 2
     m_Bits: 8
-  playerInAttackRange: 0
   attackRange: 5
 --- !u!1 &8821617299333821663
 GameObject:
