@@ -178,7 +178,7 @@ public class WaveSpawner : MonoBehaviour
         // Loop through and spawn enemies
         for (int i = 0; i < _wave.count; i++)
         {
-            Debug.Log("Count is : " + i);
+            // Debug.Log("Count is : " + i);
             if (spawnArray[arrayCount] == "REGULAR")
                 SpawnEnemy(regularEnemy);
             else if (spawnArray[arrayCount] == "TANK")
@@ -200,28 +200,28 @@ public class WaveSpawner : MonoBehaviour
         int spawnNumber = Random.Range(1, 6);
         if (spawnNumber == 1)
         {
-            Debug.Log(spawnNumber);
+            // Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn1.transform.position, spawn1.transform.rotation);
 
         }
         else if (spawnNumber == 2)
         {
-            Debug.Log(spawnNumber);
+            // Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn2.transform.position, spawn2.transform.rotation);
         }
         else if (spawnNumber == 3)
         {
-            Debug.Log(spawnNumber);
+            // Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn3.transform.position, spawn3.transform.rotation);
         }
         else if (spawnNumber == 4)
         {
-            Debug.Log(spawnNumber);
+            // Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn4.transform.position, spawn4.transform.rotation);
         }
         else if (spawnNumber == 5)
         {
-            Debug.Log(spawnNumber);
+            // Debug.Log(spawnNumber);
             Instantiate(_enemy, spawn5.transform.position, spawn5.transform.rotation);
         }
     }
