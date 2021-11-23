@@ -41,6 +41,7 @@ public class CannonBall : MonoBehaviour
             {
                 if (enemy.GetComponent<EnemyStats>().hp == 1)
                 {
+                    Debug.Log("Hey its true!");
                     enemy.GetComponent<StateManager>().isEnemyDead = true;
                     enemy.GetComponent<StateManager>().enabled = false;
                     enemy.die(despawnTime);
@@ -75,6 +76,10 @@ public class CannonBall : MonoBehaviour
                     shopManager.addCoins();
                     gameManager.UpdateAccuracy(hitEnemy);
                     Destroy(gameObject);
+                }
+                else
+                {
+
                 }
             }
         }
