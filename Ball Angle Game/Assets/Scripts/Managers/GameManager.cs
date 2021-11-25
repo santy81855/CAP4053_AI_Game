@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject treasure;
     public CannonController cannon;
     public GameObject shopUI;
+
     public enum PowerState { REGULAR, BLAST, FREEZE };
     public PowerState state = PowerState.REGULAR;
 
