@@ -71,6 +71,7 @@ public class CannonBall : MonoBehaviour
                     // if (enemy.enemyHealth == 0)
                     enemy.GetComponent<StateManager>().isEnemyDead = true;
                     enemy.GetComponent<StateManager>().enabled = false;
+                    enemy.GetComponent<Animation>().enabled = false;
                     enemy.die(despawnTime);
                     hitEnemy = true;
                     shopManager.addCoins();

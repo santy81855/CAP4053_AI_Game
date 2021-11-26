@@ -9,6 +9,9 @@ TagManager:
   - Manager
   - Event
   - AudioManager
+  - SlowZone
+  - MediumZone
+  - FastZone
   layers:
   - Default
   - TransparentFX
