@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 3233830219228717417}
   - component: {fileID: 3233830219228717418}
   - component: {fileID: 4981723463376413934}
+  - component: {fileID: 4652812085453058997}
   m_Layer: 0
   m_Name: TankEnemyFinal
   m_TagString: Enemy
@@ -783,7 +784,7 @@ MonoBehaviour:
   radius: 3
   explosionEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
-  force: 7500
+  force: 5000
 --- !u!195 &3233830219228717388
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -871,6 +872,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   hp: 2
+--- !u!114 &4652812085453058997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315332492711698415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 1
+  indicator: {fileID: 0}
 --- !u!1 &2343712858184735222
 GameObject:
   m_ObjectHideFlags: 0
