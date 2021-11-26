@@ -3317,7 +3317,7 @@ MonoBehaviour:
   radius: 2
   explosionEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
-  force: 5000
+  force: 2500
 --- !u!114 &8821617299532854131
 MonoBehaviour:
   m_ObjectHideFlags: 0

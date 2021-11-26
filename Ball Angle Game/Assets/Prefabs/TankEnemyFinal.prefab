@@ -784,7 +784,7 @@ MonoBehaviour:
   radius: 3
   explosionEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
-  force: 7500
+  force: 5000
 --- !u!195 &3233830219228717388
 NavMeshAgent:
   m_ObjectHideFlags: 0
