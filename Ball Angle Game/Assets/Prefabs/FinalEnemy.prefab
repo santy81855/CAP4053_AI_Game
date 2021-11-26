@@ -3436,9 +3436,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 3
-  FastZoneSpeedChange: 5
-  MediumZoneSpeedChange: 3
-  SlowZoneSpeedChange: 1
+  FastZoneSpeedChange: 1.6
+  MediumZoneSpeedChange: 1.3
+  SlowZoneSpeedChange: 0.9
 --- !u!1 &8820707534522858721
 GameObject:
   m_ObjectHideFlags: 0
