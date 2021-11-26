@@ -9,6 +9,9 @@ public class ChestZones : MonoBehaviour
     private int Zone = 0;
     NavMeshAgent agent;
     public float baseSpeed = 3;
+    public float FastZoneSpeedChange = 6f;
+    public float MediumZoneSpeedChange = 3f;
+    public float SlowZoneSpeedChange = 1f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,13 +22,13 @@ public class ChestZones : MonoBehaviour
         {
             Debug.Log(other.tag);
             Zone = 1;
-            change = 6f;
+            change = FastZoneSpeedChange;
             speedChange(change, Zone);
         }
         else if (other.tag == "MediumZone")
         {
             Debug.Log(other.tag);
-            change = 4f;
+            change = MediumZoneSpeedChange;
             Zone = 2;
             speedChange(change, Zone);
         }
@@ -33,7 +36,7 @@ public class ChestZones : MonoBehaviour
         {
             Debug.Log(other.tag);
             Zone = 3;
-            change = 0.5f;
+            change = SlowZoneSpeedChange;
             speedChange(change, Zone);
         }
         else
