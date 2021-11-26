@@ -39,6 +39,7 @@ public class EnemyRagdoll : MonoBehaviour
         setRigidbodyState(false);
         GetComponent<StateManager>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<Targeting>().enabled = false;
         Explode();
         // Another check if the gameObject has not been deleted yet
         StartCoroutine(EnemyGone());

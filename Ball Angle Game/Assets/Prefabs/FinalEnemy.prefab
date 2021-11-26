@@ -3229,6 +3229,8 @@ GameObject:
   - component: {fileID: 8820701993852128080}
   - component: {fileID: 8518669766695485495}
   - component: {fileID: 3043227783261930699}
+  - component: {fileID: 7106587316703859787}
+  - component: {fileID: 2994034622502511255}
   m_Layer: 0
   m_Name: FinalEnemy
   m_TagString: Enemy
@@ -3316,7 +3318,7 @@ MonoBehaviour:
   radius: 2
   explosionEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
-  force: 5000
+  force: 2500
 --- !u!114 &8821617299532854131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3404,6 +3406,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   hp: 1
+--- !u!114 &7106587316703859787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820701993852128081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 1
+  indicator: {fileID: 0}
+--- !u!114 &2994034622502511255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820701993852128081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87882f5917a95554f99320837124a171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 3
+  FastZoneSpeedChange: 1.6
+  MediumZoneSpeedChange: 1.3
+  SlowZoneSpeedChange: 0.9
 --- !u!1 &8820707534522858721
 GameObject:
   m_ObjectHideFlags: 0
