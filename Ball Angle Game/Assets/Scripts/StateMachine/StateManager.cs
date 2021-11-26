@@ -10,6 +10,7 @@ public class StateManager : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     Transform myEnemy;
+    public bool isEnemyDead;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class StateManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         myEnemy = transform;
         fpsCam = Camera.main;
+        isEnemyDead = false;
     }
 
     // Update is called once per frame

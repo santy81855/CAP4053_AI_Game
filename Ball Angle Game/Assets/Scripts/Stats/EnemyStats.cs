@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
-    //public override void Die()
-    //{
-        //base.Die();
+public class EnemyStats : MonoBehaviour
+{
+    public enum EnemyType { REGULAR, SPEED, TANK };
+    public EnemyType enemyType;
 
-        //Destroy(GameObject);
-    //}
+    public int hp;
+    void start()
+    {
+
+    }
 }

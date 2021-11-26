@@ -81,16 +81,16 @@ public class EnemyRagdoll : MonoBehaviour
     // For explosion physics after collision.
     void Explode()
     {
-        Debug.Log("Explode");
+        // Debug.Log("Explode");
         GameObject explosion = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
 
-        Debug.Log("Transform: " + transform.position);
+        // Debug.Log("Transform: " + transform.position);
         foreach (Rigidbody bodypart in rigidbodies)
         {
-            Debug.Log("body" + bodypart);
+            // Debug.Log("body" + bodypart);
             if (bodypart != null)
             {
-                Debug.Log("Adding Force to " + bodypart);
+                // Debug.Log("Adding Force to " + bodypart);
                 bodypart.AddExplosionForce(force / 2, transform.position, radius, (float)ForceMode.Impulse);
                 bodypart.AddRelativeForce(Vector3.back * 2 * force);
             }
