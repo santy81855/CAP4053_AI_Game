@@ -56,6 +56,11 @@ public class WaveSpawner : MonoBehaviour
     public Transform regularEnemy;
     public Transform tankEnemy;
     public Transform speedEnemy;
+    // The 3 types of enemies are "REGULAR", "SPEED", and "TANK"
+    // need to create an array that will spawn the correct amount of enemies depending on the input
+    // and it also needs to make it more difficult depending on the person's accuracy
+    // The number of waves is: waves.Length
+    // The number of enemies in wave 1: waves[0].count
     private string[] waveArrayOne = new string[] { "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "TANK", "TANK", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED" };
 
     public string[] waveArrayTwo;
@@ -172,18 +177,66 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        // Here is where we create the array of enemies based on the person's accuracy
+        // get the accuracy as a fraction
+        GameObject manager = GameObject.Find("GameManager");
+        GameManager acc = manager.GetComponent<GameManager>();
+        float accuracy;
+        if (acc.ballHit == 0 || acc.ballCount == 0)
+            accuracy = 0.5f;
+        else
+            accuracy = acc.ballHit / acc.ballCount;
+
+        // now using the accuracy we determine if we should increase the count of enemies for the wave
+        // We will assume that 50% accuracy means you are normal
+        // so we will multiply the enemy count by 2 * accuracy, so if your accuracy is 50% then you
+        // will just get the normal amount of enemies
+        
+        // if the current accuracy is 0 it means that the person is on wave 1, so we will default
+        // to a 50% accuracy
+        Debug.Log(accuracy);
+
+        // get the adjusted enemy 
+        float enemyCount = _wave.count * 2 * accuracy;
+        Debug.Log("Spawning the number below");
+        Debug.Log(enemyCount);
+
+        // we will assume that we want a normal enemy to appear 70% of the time and the hard
+        // enemies to each appear 15% of the time if you have an accuracy of 50%.
+        float normalEnemyConstant = 0.714f; // we get this by dividing 50/70
+        // since we want to spawn less normal enemies and more harder enemies when the person is
+        // doing well we can just multiply it by 2 * accuracy, since it will keep the number
+        // constant for an accuracy of 50% and will make the spawnrate of normal enemies lower for
+        // higher accuracies
+        float adjustedEnemyConstant = normalEnemyConstant * 2.0f * accuracy;
+        // now we get the rates for the 3 enemy types
+        float normalRate = 0.5f / adjustedEnemyConstant;
+        // rate for fast enemies
+        float fastRate = (1.0f - normalRate) / 2.0f;
+        float tankRate = fastRate;
+        // example: the wave is meant to have 10 enemies
+        // the person has an accuracy of 0.65, which is considered better than average
+        // the number of enemies gets adjusted to 10 * 0.65 * 2 = 13
+        // the rate of normal enemies will go from 70% to 0.5 / (0.714 * 2 * 0.65) = 54%
+        // this means the rate of fast and tank enemies will go from 15% each to 1 - 0.54 / 2 = 23%
+        // this ensures that the game scales in difficulty as the person gets better
+
         // set the state to show that we are currently spawning enemies
         state = SpawnState.SPAWNING;
 
         // Loop through and spawn enemies
-        for (int i = 0; i < _wave.count; i++)
+        for (int i = 0; i < (int)enemyCount; i++)
         {
-            // Debug.Log("Count is : " + i);
-            if (spawnArray[arrayCount] == "REGULAR")
+            // We will spawn the enemies depending on the calculated rates above
+            int number = Random.Range(1, 100);
+            // example: if the number is under 50
+            if (number <= (normalRate * 100))
                 SpawnEnemy(regularEnemy);
-            else if (spawnArray[arrayCount] == "TANK")
+            // ex: if the number is between 50 and 75
+            else if (number > (normalRate * 100) && (number <= (100 - (tankRate * 100))))
                 SpawnEnemy(tankEnemy);
-            else if (spawnArray[arrayCount] == "SPEED")
+            // ex: if the number is between 75 and 100
+            else if (number > (100 - (fastRate * 100)))
                 SpawnEnemy(speedEnemy);
 
             arrayCount++;
