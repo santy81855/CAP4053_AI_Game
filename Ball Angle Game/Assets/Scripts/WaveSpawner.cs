@@ -234,7 +234,7 @@ public class WaveSpawner : MonoBehaviour
                 SpawnEnemy(regularEnemy);
             // ex: if the number is between 50 and 75
             else if (number > (normalRate * 100) && (number <= (100 - (tankRate * 100))))
-                SpawnEnemy(tankEnemy);
+                SpawnEnemy(speedEnemy);
             // ex: if the number is between 75 and 100
             else if (number > (100 - (fastRate * 100)))
                 SpawnEnemy(speedEnemy);
