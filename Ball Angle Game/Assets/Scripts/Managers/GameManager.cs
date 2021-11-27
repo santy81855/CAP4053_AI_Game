@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
 
-    private float ballCount = 0;
-    private float ballHit = 0;
+    public float ballCount = 0;
+    public float ballHit = 0;
     private bool enableLock1 = false;
     private bool enableLock2 = false;
     private bool enableLock3 = false;
