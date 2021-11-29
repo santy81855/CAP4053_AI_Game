@@ -18,7 +18,7 @@ public class EnemyRagdoll : MonoBehaviour
     void Start()
     {
         explosionEffect = Resources.Load("DustExplosion") as GameObject;
-        Debug.Log(explosionEffect);
+        // Debug.Log(explosionEffect);
         setRigidbodyState(true);
         setColliderState(false);
         GetComponent<Animator>().enabled = true;

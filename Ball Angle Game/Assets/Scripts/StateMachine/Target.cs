@@ -39,11 +39,12 @@ public class Target : State
             // Can potentially put something here that can make movement smarter.
 
             agent.SetDestination(target.position);
-            FaceTarget(target);
+            //FaceTarget(target);
             return this;
         }
     }
 
+    // DEPRECATED
     // FaceTarget() makes the enemy always face the objective.
     // This is only on in target() because when the enemy is BAWing,
     // it should probably look away.
