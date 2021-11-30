@@ -38,7 +38,7 @@ public class CannonInMenu : MonoBehaviour
         rotX += mouseY * mouseSensitivity * Time.deltaTime;
 
         // Up/Down
-        rotX = Mathf.Clamp(rotX, -75, 75);
+        rotX = Mathf.Clamp(rotX, -75, 35);
 
         // Set starting angle of the cannon
         Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
