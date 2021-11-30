@@ -46,32 +46,29 @@ public class CannonBall : MonoBehaviour
                     EnemyRagdoll enemyInRange = nearbyObject.transform.GetComponent<EnemyRagdoll>();
                     if (enemyInRange != null)
                     {
-                        // Vector3 toBall = transform.position - enemy.transform.position;
-                        // enemy.GetComponent<StateManager>().enabled = false;
+                        float distance = Vector3.Distance(enemyInRange.GetComponent<Transform>().position, transform.position);
 
-                        // Vector3 targetPosition = toBall.normalized * -3f;
-                        // enemy.GetComponent<NavMeshAgent>().SetDestination(targetPosition);
-
-                        Vector3 newVec;
+                        Vector3 dirToBall = enemyInRange.GetComponent<Transform>().position - transform.position;
+                        Vector3 newPos = enemyInRange.GetComponent<Transform>().position + dirToBall;
 
                         int dice = Random.Range(1, 4);
-                        if (dice == 1)
-                        {
-                            newVec = new Vector3(0.0f, 0.0f, 20.0f);
-                        }
-                        // If two, set the enemy destination 20f right of itself.
-                        else if (dice == 2)
-                        {
-                            newVec = new Vector3(0.0f, 0.0f, -20.0f);
-                        }
-                        else
-                        {
-                            newVec = new Vector3(20.0f, 0.0f, 0.0f);
-                        }
+                        // if (dice == 1)
+                        // {
+                        //     newVec = new Vector3(0.0f, 0.0f, 20.0f);
+                        // }
+                        // // If two, set the enemy destination 20f right of itself.
+                        // else if (dice == 2)
+                        // {
+                        //     newVec = new Vector3(0.0f, 0.0f, -20.0f);
+                        // }
+                        // else
+                        // {
+                        //     newVec = new Vector3(20.0f, 0.0f, 0.0f);
+                        // }
 
                         dice = Random.Range(1, 5);
                         if (dice == 1)
-                            StartCoroutine(EnemyFlee(newVec, enemyInRange));
+                            StartCoroutine(EnemyFlee(newPos, enemyInRange));
                     }
                     else
                     {
@@ -159,7 +156,7 @@ public class CannonBall : MonoBehaviour
 
     IEnumerator EnemyFlee(Vector3 myvec, EnemyRagdoll enemyInRange)
     {
-        enemyInRange.GetComponent<NavMeshAgent>().SetDestination(enemyInRange.GetComponent<Transform>().position + myvec);
+        enemyInRange.GetComponent<NavMeshAgent>().SetDestination(myvec);
         enemyInRange.GetComponent<StateManager>().enabled = false;
         yield return new WaitForSecondsRealtime(3);
         if (enemyInRange.GetComponent<StateManager>().isEnemyDead == false)
