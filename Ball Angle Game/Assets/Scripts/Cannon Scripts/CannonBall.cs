@@ -12,8 +12,6 @@ public class CannonBall : MonoBehaviour
     private GameManager gameManager;
     private bool hitEnemy = false;
 
-
-
     void Start()
     {
         // Reference the GameManager Singleton.
