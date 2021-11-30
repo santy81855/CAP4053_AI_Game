@@ -49,7 +49,7 @@ public class CannonController : MonoBehaviour
         rotX += mouseY * mouseSensitivity * Time.deltaTime;
 
         // Up/Down
-        rotX = Mathf.Clamp(rotX, -75, 75);
+        rotX = Mathf.Clamp(rotX, -75, 35);
 
         // Left/Right (only for level 1 we restrict this movement)
 
