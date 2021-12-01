@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
     // all variables that need to be imported in the unity editor
     public enum SpawnState { SPAWNING, WAITING, COUNTING, ENDING };
     public GameObject waveText;
+    public GameObject waveTracker;
+    public GameObject shopReminderText;
     public GameObject bigBall;
     public GameObject fastFire;
     public Transform bigBallSpawn;
@@ -69,7 +71,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCountdown = timeBetweenWaves;
+        waveCountdown = 5.0f;
         gameManager = gameObject.GetComponent<GameManager>();
 
         if (numLevel == 1)
@@ -101,10 +103,10 @@ public class WaveSpawner : MonoBehaviour
                 return;
             }
         }
-
         // Check if the countdown of the wave has hit zero
         if (waveCountdown <= 0)
         {
+            shopReminderText.SetActive(false);
             // fast fire powerup in wave 1
             if (nextWave == 1 && ffFlag == 0)
             {
@@ -135,7 +137,7 @@ public class WaveSpawner : MonoBehaviour
     }
     void WaveCompleted()
     {
-        Debug.Log("Wave completed!");
+        Debug.Log("Wave Completed!");
 
         // Change the state to the counting state
         state = SpawnState.COUNTING;
@@ -153,6 +155,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
+            shopReminderText.SetActive(true);
             nextWave++;
         }
 
@@ -168,7 +171,7 @@ public class WaveSpawner : MonoBehaviour
             // When the timer is up, check if there are any enemies left.
             if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
-                Debug.Log("WE HAVE NO ENEMIES ON THE BOARD");
+                Debug.Log("All Enemies have been eliminated");
                 return false;
             }
         }
@@ -282,6 +285,7 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator WaveNumberText()
     {
         waveText.GetComponent<TMP_Text>().text = "Wave: " + (nextWave + 1);
+        waveTracker.GetComponent<TMP_Text>().text = "Wave " + (nextWave + 1) + "/5";
         waveText.SetActive(true);
         yield return new WaitForSecondsRealtime(4);
         waveText.SetActive(false);

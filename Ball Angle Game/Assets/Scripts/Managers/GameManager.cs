@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject treasure;
     public CannonController cannon;
     public GameObject shopUI;
+    public GameObject gameplayUI;
 
     public enum PowerState { REGULAR, BLAST, FREEZE };
     public PowerState state = PowerState.REGULAR;
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Exiting Shop");
             shopUI.SetActive(false);
+            gameplayUI.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             cannon.cannonLock = false;
         }
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Entering Shop");
             shopUI.SetActive(true);
+            gameplayUI.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             cannon.cannonLock = true;

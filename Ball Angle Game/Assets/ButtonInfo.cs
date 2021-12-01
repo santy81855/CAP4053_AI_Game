@@ -11,12 +11,12 @@ public class ButtonInfo : MonoBehaviour
     public TMP_Text priceText;
     public TMP_Text quantityText;
     public GameObject shopManager;
-    
+
     // Set the initial price and quantity of the numbers inside of the shop
     // (most of the time they are only going to be zero).
     void Start()
     {
-        priceText.text = "$" + shopManager.GetComponent<ShopManager>().shopItems[2, itemID].ToString();
+        priceText.text = "COST: " + shopManager.GetComponent<ShopManager>().shopItems[2, itemID].ToString();
         quantityText.text = shopManager.GetComponent<ShopManager>().shopItems[3, itemID].ToString();
     }
 
