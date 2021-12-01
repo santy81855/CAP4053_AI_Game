@@ -53,7 +53,7 @@ public class ShopManager : MonoBehaviour
         shopItems[1, 4] = 4;
 
         // Price
-        shopItems[2, 1] = 40;
+        shopItems[2, 1] = 60;
         shopItems[2, 2] = 30;
         shopItems[2, 3] = 50;
         shopItems[2, 4] = 40;
@@ -69,8 +69,8 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         // Set coins text
-        coinsText.text = coins.ToString();
-        coinsGameText.text = coins.ToString();
+        coinsText.text = "COINS: " + coins.ToString();
+        coinsGameText.text = "Coins: " + coins.ToString();
 
 
         // Set quantity text
@@ -91,8 +91,8 @@ public class ShopManager : MonoBehaviour
         {
             // Buy and set coins
             coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID];
-            coinsText.text = coins.ToString();
-            coinsGameText.text = coins.ToString();
+            coinsText.text = "COINS: " + coins.ToString();
+            coinsGameText.text = "Coins: " + coins.ToString();
 
             // Increase quantity and set the quantity counters to the correct number.
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().itemID]++;
@@ -110,7 +110,7 @@ public class ShopManager : MonoBehaviour
     public void addCoins()
     {
         coins += 10;
-        coinsText.text = coins.ToString();
-        coinsGameText.text = coins.ToString();
+        coinsText.text = "COINS: " + coins.ToString();
+        coinsGameText.text = "Coins: " + coins.ToString();
     }
 }

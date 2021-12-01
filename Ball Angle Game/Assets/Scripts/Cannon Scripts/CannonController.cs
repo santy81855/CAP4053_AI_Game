@@ -39,34 +39,36 @@ public class CannonController : MonoBehaviour
 
     void Update()
     {
-
-        // Get input from mouse
-        float mouseX = Input.GetAxis("Mouse X") * 20;
-        float mouseY = -Input.GetAxis("Mouse Y") * 20;
-
-        // Apply speed and sensitivity to camera look movement
-        rotY += mouseX * mouseSensitivity * Time.deltaTime;
-        rotX += mouseY * mouseSensitivity * Time.deltaTime;
-
-        // Up/Down
-        rotX = Mathf.Clamp(rotX, -75, 35);
-
-        // Left/Right (only for level 1 we restrict this movement)
-
-        if (xCameraBlock == true)
-            rotY = Mathf.Clamp(rotY, -115, 115);
-
-        // Set starting angle of the cannon
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
-        transform.rotation = localRotation;
-
-        // Reloader logic
-        if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire && cannonLock == false && GameManager.Instance.hasExploded == false)
+        if (cannonLock == false)
         {
-            // Set the next time to fire, call the reload slider, and fire the cannon.
-            nextTimeToFire = Time.time + fireRate;
-            reloadLoader.LoadReload(nextTimeToFire, fireRate);
-            FireCannon();
+            // Get input from mouse
+            float mouseX = Input.GetAxis("Mouse X") * 20;
+            float mouseY = -Input.GetAxis("Mouse Y") * 20;
+
+            // Apply speed and sensitivity to camera look movement
+            rotY += mouseX * mouseSensitivity * Time.deltaTime;
+            rotX += mouseY * mouseSensitivity * Time.deltaTime;
+
+            // Up/Down
+            rotX = Mathf.Clamp(rotX, -75, 35);
+
+            // Left/Right (only for level 1 we restrict this movement)
+
+            if (xCameraBlock == true)
+                rotY = Mathf.Clamp(rotY, -115, 115);
+
+            // Set starting angle of the cannon
+            Quaternion localRotation = Quaternion.Euler(rotX, rotY + 90, 0.0f);
+            transform.rotation = localRotation;
+
+            // Reloader logic
+            if (Pause_Menu.GameIsPaused == false && Input.GetMouseButton(0) && Time.time >= nextTimeToFire && GameManager.Instance.hasExploded == false)
+            {
+                // Set the next time to fire, call the reload slider, and fire the cannon.
+                nextTimeToFire = Time.time + fireRate;
+                reloadLoader.LoadReload(nextTimeToFire, fireRate);
+                FireCannon();
+            }
         }
     }
 

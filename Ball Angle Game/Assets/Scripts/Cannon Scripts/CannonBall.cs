@@ -28,6 +28,8 @@ public class CannonBall : MonoBehaviour
         if (gameManager.state == GameManager.PowerState.REGULAR)
         {
 
+            // Start the despawn coroutine
+            StartCoroutine(DespawnBall());
 
             // Get the enemy from the other object if there is one
             EnemyRagdoll enemy = other.transform.GetComponent<EnemyRagdoll>();
@@ -35,8 +37,7 @@ public class CannonBall : MonoBehaviour
             // If it did hit an enemy, kill the enemy and mark good accuracy.
             if (enemy != null)
             {
-                // Start the despawn coroutine
-                StartCoroutine(DespawnBall());
+
 
                 // Update accuracy boolean
                 hitEnemy = true;
