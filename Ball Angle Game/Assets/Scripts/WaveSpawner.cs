@@ -61,7 +61,7 @@ public class WaveSpawner : MonoBehaviour
     // and it also needs to make it more difficult depending on the person's accuracy
     // The number of waves is: waves.Length
     // The number of enemies in wave 1: waves[0].count
-    private string[] waveArrayOne = new string[] { "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "TANK", "TANK", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED" };
+    private string[] waveArrayOne = new string[] { "TANK", "TANK", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "TANK", "TANK", "TANK", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "SPEED", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "REGULAR", "SPEED" };
 
     public string[] waveArrayTwo;
     public string[] waveArrayThree;
@@ -191,7 +191,7 @@ public class WaveSpawner : MonoBehaviour
         // We will assume that 50% accuracy means you are normal
         // so we will multiply the enemy count by 2 * accuracy, so if your accuracy is 50% then you
         // will just get the normal amount of enemies
-        
+
         // if the current accuracy is 0 it means that the person is on wave 1, so we will default
         // to a 50% accuracy
         Debug.Log(accuracy);

@@ -53,12 +53,8 @@ public class GameManager : MonoBehaviour
 
     public float ballCount = 0;
     public float ballHit = 0;
-    private bool enableLock1 = false;
-    private bool enableLock2 = false;
-    private bool enableLock3 = false;
-    private bool enableLock4 = false;
-
-    private bool hasExploded = false;
+    public bool enableLock = false;
+    public bool hasExploded = false;
 
     void Start()
     {
@@ -70,26 +66,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && (int.Parse(abilityCount1.text) != 0) && enableLock1 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && (int.Parse(abilityCount1.text) != 0) && enableLock == false)
         {
             gameObject.GetComponent<ShopManager>().ConsumeCharge(1);
             PowerUp(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && (int.Parse(abilityCount2.text) != 0) && enableLock2 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && (int.Parse(abilityCount2.text) != 0) && enableLock == false)
         {
             gameObject.GetComponent<ShopManager>().ConsumeCharge(2);
 
             PowerUp(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && (int.Parse(abilityCount3.text) != 0) && enableLock3 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && (int.Parse(abilityCount3.text) != 0) && enableLock == false)
         {
             gameObject.GetComponent<ShopManager>().ConsumeCharge(3);
             PowerUp(2);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && (int.Parse(abilityCount4.text) != 0) && enableLock4 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && (int.Parse(abilityCount4.text) != 0) && enableLock == false)
         {
             gameObject.GetComponent<ShopManager>().ConsumeCharge(4);
             PowerUp(3);
@@ -193,43 +189,43 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FastFireRate()
     {
-        enableLock1 = true;
+        enableLock = true;
         Debug.Log("POWERUP: FAST FIRE!!!");
         float temp = cannon.fireRate;
         cannon.fireRate /= 2f;
         yield return new WaitForSecondsRealtime(7);
         cannon.fireRate = temp;
-        enableLock1 = false;
+        enableLock = false;
     }
 
     IEnumerator BigBall()
     {
-        enableLock2 = true;
+        enableLock = true;
         Debug.Log("POWERUP: BIG BALLS!!!");
         cannonBall.transform.localScale = new Vector3(2f, 2f, 2f);
         yield return new WaitForSecondsRealtime(12);
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
-        enableLock2 = false;
+        enableLock = false;
     }
 
     IEnumerator BlastBall()
     {
-        enableLock3 = true;
+        enableLock = true;
         Debug.Log("POWERUP: BLAST BALL!!!");
         state = PowerState.BLAST;
         yield return new WaitForSecondsRealtime(7);
         state = PowerState.REGULAR;
-        enableLock3 = false;
+        enableLock = false;
     }
 
     IEnumerator FreezeBall()
     {
-        enableLock4 = true;
+        enableLock = true;
         Debug.Log("POWERUP: FREEZE BALL!!!");
         state = PowerState.FREEZE;
         yield return new WaitForSecondsRealtime(7);
         state = PowerState.REGULAR;
-        enableLock4 = false;
+        enableLock = false;
     }
     public void UpdateAccuracy(bool hit)
     {
