@@ -39959,7 +39959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2b37b5007cd548b16142de04e7998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 1000
   coinsText: {fileID: 752062153}
   coinsGameText: {fileID: 409578231}
   q1: {fileID: 475852980}
@@ -54235,7 +54235,7 @@ MonoBehaviour:
   firePower: 15
   fireRate: 2
   powerMultiplier: 100
-  mouseSensitivity: 100
+  mouseSensitivity: 25
   cannonLock: 0
   xCameraBlock: 0
 --- !u!224 &2493749080468309496

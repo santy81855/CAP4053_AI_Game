@@ -7,7 +7,7 @@ public class CannonBall : MonoBehaviour
 {
     // Initialize variables
     [SerializeField] float despawnTime = 3f;
-    private float radius = 100f;
+    private float radius = 3f;
     private ShopManager shopManager;
     private GameManager gameManager;
     private bool hitEnemy = false;
@@ -25,11 +25,9 @@ public class CannonBall : MonoBehaviour
     // data to the correct place.
     void OnCollisionEnter(Collision other)
     {
-
         if (gameManager.state == GameManager.PowerState.REGULAR)
         {
-            // Start the despawn coroutine
-            StartCoroutine(DespawnBall());
+
 
             // Get the enemy from the other object if there is one
             EnemyRagdoll enemy = other.transform.GetComponent<EnemyRagdoll>();
@@ -37,55 +35,46 @@ public class CannonBall : MonoBehaviour
             // If it did hit an enemy, kill the enemy and mark good accuracy.
             if (enemy != null)
             {
+                // Start the despawn coroutine
+                StartCoroutine(DespawnBall());
+
+                // Update accuracy boolean
+                hitEnemy = true;
+
+                // Instantiate colliders array with all objects around the ball
                 Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
+                // Loop through each object
                 foreach (Collider nearbyObject in colliders)
                 {
+                    // Grab the EnemyRagdoll component
                     EnemyRagdoll enemyInRange = nearbyObject.transform.GetComponent<EnemyRagdoll>();
+
+                    // If theres an enemy, give it a chance to flee
                     if (enemyInRange != null)
                     {
-                        float distance = Vector3.Distance(enemyInRange.GetComponent<Transform>().position, transform.position);
-
-                        Vector3 dirToBall = enemyInRange.GetComponent<Transform>().position - transform.position;
-                        Vector3 newPos = enemyInRange.GetComponent<Transform>().position + dirToBall;
-
-                        int dice = Random.Range(1, 4);
-                        // if (dice == 1)
-                        // {
-                        //     newVec = new Vector3(0.0f, 0.0f, 20.0f);
-                        // }
-                        // // If two, set the enemy destination 20f right of itself.
-                        // else if (dice == 2)
-                        // {
-                        //     newVec = new Vector3(0.0f, 0.0f, -20.0f);
-                        // }
-                        // else
-                        // {
-                        //     newVec = new Vector3(20.0f, 0.0f, 0.0f);
-                        // }
-
-                        dice = Random.Range(1, 5);
+                        int dice = Random.Range(1, 5);
                         if (dice == 1)
+                        {
+                            float distance = Vector3.Distance(enemyInRange.GetComponent<Transform>().position, transform.position);
+                            Vector3 dirToBall = enemyInRange.GetComponent<Transform>().position - transform.position;
+                            Vector3 newPos = enemyInRange.GetComponent<Transform>().position + dirToBall;
                             StartCoroutine(EnemyFlee(newPos, enemyInRange));
-                    }
-                    else
-                    {
-
+                        }
                     }
                 }
+
                 if (enemy.GetComponent<EnemyStats>().hp == 1)
                 {
                     enemy.GetComponent<StateManager>().isEnemyDead = true;
                     enemy.GetComponent<StateManager>().enabled = false;
                     enemy.die(despawnTime);
-                    hitEnemy = true;
                     shopManager.addCoins();
                 }
                 else
                 {
                     enemy.GetComponent<EnemyStats>().hp--;
                 }
-
             }
             else
             {
@@ -98,17 +87,15 @@ public class CannonBall : MonoBehaviour
 
             foreach (Collider nearbyObject in colliders)
             {
-                EnemyRagdoll enemy = nearbyObject.transform.GetComponent<EnemyRagdoll>();
-                if (enemy != null)
+                EnemyRagdoll enemyInRange = nearbyObject.transform.GetComponent<EnemyRagdoll>();
+                if (enemyInRange != null)
                 {
-                    // if (enemy.enemyHealth == 0)
-                    enemy.GetComponent<StateManager>().isEnemyDead = true;
-                    enemy.GetComponent<StateManager>().enabled = false;
-                    enemy.GetComponent<Animation>().enabled = false;
-                    enemy.die(despawnTime);
+                    enemyInRange.GetComponent<StateManager>().isEnemyDead = true;
+                    enemyInRange.GetComponent<StateManager>().enabled = false;
+                    enemyInRange.die(despawnTime);
                     hitEnemy = true;
-                    shopManager.addCoins();
                     gameManager.UpdateAccuracy(hitEnemy);
+                    shopManager.addCoins();
                     Destroy(gameObject);
                 }
                 else
@@ -119,20 +106,29 @@ public class CannonBall : MonoBehaviour
         }
         else if (gameManager.state == GameManager.PowerState.FREEZE)
         {
+            EnemyRagdoll enemy = other.transform.GetComponent<EnemyRagdoll>();
+            if (enemy != null)
+            {
+                enemy.GetComponent<StateManager>().isEnemyDead = true;
+                enemy.die(despawnTime);
+                hitEnemy = true;
+            }
+
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
             foreach (Collider nearbyObject in colliders)
             {
-                EnemyRagdoll enemy = nearbyObject.transform.GetComponent<EnemyRagdoll>();
-                if (enemy != null)
+                EnemyRagdoll enemyInRange = nearbyObject.transform.GetComponent<EnemyRagdoll>();
+                if (enemyInRange != null)
                 {
                     NavMeshAgent agent = nearbyObject.transform.GetComponent<NavMeshAgent>();
                     StartCoroutine(FreezeTime(agent));
                     hitEnemy = true;
                     shopManager.addCoins();
-                    gameManager.UpdateAccuracy(hitEnemy);
                 }
             }
+
+            gameManager.UpdateAccuracy(hitEnemy);
         }
     }
 
@@ -140,15 +136,16 @@ public class CannonBall : MonoBehaviour
     IEnumerator DespawnBall()
     {
         // Wait 5 seconds, then pass the hit to the GameManager and destroy the ball.
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSeconds(5);
         gameManager.UpdateAccuracy(hitEnemy);
         Destroy(gameObject);
     }
     IEnumerator FreezeTime(NavMeshAgent agent)
     {
         agent.isStopped = true;
-        yield return new WaitForSecondsRealtime(5);
-        agent.isStopped = false;
+        yield return new WaitForSeconds(5);
+        if (agent != null && agent.GetComponent<StateManager>().isEnemyDead == false)
+            agent.isStopped = false;
         Destroy(gameObject);
     }
 
@@ -156,7 +153,7 @@ public class CannonBall : MonoBehaviour
     {
         enemyInRange.GetComponent<NavMeshAgent>().SetDestination(myvec);
         enemyInRange.GetComponent<StateManager>().enabled = false;
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSeconds(3);
         if (enemyInRange.GetComponent<StateManager>().isEnemyDead == false)
             enemyInRange.GetComponent<StateManager>().enabled = true;
     }
