@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public float minForce;
     public float maxForce;
     public float radius;
+    public GameObject sliderObject;
+    public Slider slider;
 
     private void Awake()
     {
@@ -192,6 +194,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FastFireRate()
     {
+        StartCoroutine(DepleteBar(7));
         enableLock = true;
         Debug.Log("POWERUP: FAST FIRE!!!");
         float temp = cannon.fireRate;
@@ -203,6 +206,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BigBall()
     {
+        StartCoroutine(DepleteBar(12));
         enableLock = true;
         Debug.Log("POWERUP: BIG BALLS!!!");
         cannonBall.transform.localScale = new Vector3(2f, 2f, 2f);
@@ -213,6 +217,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BlastBall()
     {
+        StartCoroutine(DepleteBar(7));
+
         enableLock = true;
         Debug.Log("POWERUP: BLAST BALL!!!");
         state = PowerState.BLAST;
@@ -223,6 +229,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FreezeBall()
     {
+        StartCoroutine(DepleteBar(7));
         enableLock = true;
         Debug.Log("POWERUP: FREEZE BALL!!!");
         state = PowerState.FREEZE;
@@ -236,5 +243,25 @@ public class GameManager : MonoBehaviour
             accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((++ballHit / ++ballCount) * 100) + "%";
         else
             accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((ballHit / ++ballCount) * 100) + "%";
+    }
+
+
+    IEnumerator DepleteBar(float powerTime)
+    {
+        // While the progress of the bar is below 100 percent, keep filling up the bar according to
+        // the percentage between the last time fired, the next time it can be fired, and how much time
+        // has elapsed in the meantime.
+        sliderObject.SetActive(true);
+        float depleteTime = Time.time + powerTime;
+        float progress = 1.00f;
+        slider.value = progress;
+        while (progress >= 0.00f)
+        {
+            progress = ((depleteTime - Time.time) / powerTime);
+            slider.value = progress;
+            yield return null;
+        }
+        sliderObject.SetActive(false);
+        yield break;
     }
 }
