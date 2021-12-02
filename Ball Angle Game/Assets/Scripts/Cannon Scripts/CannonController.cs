@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class CannonController : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class CannonController : MonoBehaviour
     public float fireRate = 2f;
     public int powerMultiplier = 100;
     public float mouseSensitivity = 100.0f;
-
+    
+    
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;
     private float rotY;
@@ -35,6 +37,7 @@ public class CannonController : MonoBehaviour
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
+       
     }
 
     void Update()
@@ -80,5 +83,12 @@ public class CannonController : MonoBehaviour
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
         fireSound.Play();
+    }
+
+    public void SetSensitvity(float sense)
+    {
+        
+        mouseSensitivity = sense;
+        Debug.Log(sense);
     }
 }
