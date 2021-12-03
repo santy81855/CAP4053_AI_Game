@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class LevelLock : MonoBehaviour
 {
+    private static LevelLock instance;
+    public static LevelLock Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +31,12 @@ public class LevelLock : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void Win2()
+    public void Win(int level)
     {
-        PlayerPrefs.SetInt("level2", 1);
-        PlayerPrefs.Save();
-    }
-
-    public void Win3()
-    {
-        PlayerPrefs.SetInt("level3", 1);
-        PlayerPrefs.Save();
+        if (level == 1)
+            PlayerPrefs.SetInt("level2", 1);
+        else if (level == 2)
+            PlayerPrefs.SetInt("level3", 1);
     }
 
     public void LoadPref()
@@ -47,5 +58,14 @@ public class LevelLock : MonoBehaviour
     {
         PlayerPrefs.SetInt("level2", 0);
         PlayerPrefs.SetInt("level3", 0);
+    }
+
+    public void EnterLevelTwo()
+    {
+        if (PlayerPrefs.GetInt("level2") == 1)
+        {
+
+        }
+
     }
 }
