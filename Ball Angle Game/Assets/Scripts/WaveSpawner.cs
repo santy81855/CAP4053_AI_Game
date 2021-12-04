@@ -42,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
     public float waveCountdown;
 
     private float searchCountdown = 1f;
-    private SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.COUNTING;
     // fast fire powerfup flag
     private int ffFlag = 0;
     // big ball powerup flag
@@ -54,6 +54,7 @@ public class WaveSpawner : MonoBehaviour
 
     private int arrayCount = 0;
     private string[] spawnArray;
+    public bool isIntermission = false;
 
     public Transform regularEnemy;
     public Transform tankEnemy;
