@@ -16,10 +16,10 @@ public class CannonController : MonoBehaviour
     public int powerMultiplier = 100;
     public float mouseSensitivity = 100.0f;
     public Slider slider;
-    
-   
-    
-    
+
+
+
+
     private AudioSource fireSound;
     private ReloadLoader reloadLoader;
     private float rotY;
@@ -41,7 +41,7 @@ public class CannonController : MonoBehaviour
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
-       
+
     }
 
     void Update()
@@ -50,7 +50,7 @@ public class CannonController : MonoBehaviour
         if (cannonLock == false)
         {
 
-            
+
             // Get input from mouse
             float mouseX = Input.GetAxis("Mouse X") * 20;
             float mouseY = -Input.GetAxis("Mouse Y") * 20;
@@ -90,6 +90,19 @@ public class CannonController : MonoBehaviour
         cannonballRB.AddForce(transform.forward * firePower);
         Instantiate(explosion, shotPos.position, shotPos.rotation);
         fireSound.Play();
+    }
+
+    public void CheckSensitivity()
+    {
+        if (!PlayerPrefs.HasKey("SaveSense"))
+        {
+            mouseSensitivity = 50f;
+            PlayerPrefs.SetFloat("SaveSense", 50f);
+        }
+        else
+        {
+            mouseSensitivity = PlayerPrefs.GetFloat("SaveSense");
+        }
     }
 
     public void SetSensitvity(float sense)

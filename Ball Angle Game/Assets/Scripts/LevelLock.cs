@@ -7,6 +7,8 @@ public class LevelLock : MonoBehaviour
     private static LevelLock instance;
     public static LevelLock Instance { get { return instance; } }
 
+    public GameObject warning;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -67,5 +69,12 @@ public class LevelLock : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator DisplayWarning()
+    {
+        warning.SetActive(true);
+        yield return new WaitForSeconds(3);
+        warning.SetActive(false);
     }
 }

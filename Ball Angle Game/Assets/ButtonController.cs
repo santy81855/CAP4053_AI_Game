@@ -10,6 +10,7 @@ public class ButtonController : MonoBehaviour
     public GameObject helpMenu;
     public GameObject nextSlide;
     public GameObject levelMenu;
+    public LevelLock levelLock;
     public int currentLevel;
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,7 @@ public class ButtonController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(DisplayWarning());
+                levelLock.StartCoroutine(DisplayWarning());
             }
         }
         else if (currentLevel == 3)
@@ -58,7 +59,7 @@ public class ButtonController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(DisplayWarning());
+                levelLock.StartCoroutine(DisplayWarning());
             }
         }
     }

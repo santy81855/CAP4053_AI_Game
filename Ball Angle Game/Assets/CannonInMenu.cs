@@ -60,4 +60,11 @@ public class CannonInMenu : MonoBehaviour
         Instantiate(explosion, shotPos.position, shotPos.rotation);
         fireSound.Play();
     }
+
+    public void SetSensitvity(float sense)
+    {
+        mouseSensitivity = sense;
+        PlayerPrefs.SetFloat("SaveSense", mouseSensitivity);
+        Debug.Log(sense);
+    }
 }
