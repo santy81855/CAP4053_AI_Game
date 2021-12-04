@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float radius;
     public GameObject sliderObject;
     public Slider slider;
+    public int currentLevel;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
-
+    private WaveSpawner waveSpawner;
     public float ballCount = 0;
     public float ballHit = 0;
     public bool enableLock = false;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
         winAudio = AudioManager.Instance.WinAudio;
         loseAudio = AudioManager.Instance.LoseAudio;
         cannonBall.transform.localScale = new Vector3(1f, 1f, 1f);
+        waveSpawner = gameObject.GetComponent<WaveSpawner>();
     }
 
 
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
 
         Debug.Log("LEVEL WON!");
+        LevelLock.Instance.Win(currentLevel);
         waveText.SetActive(false);
         accuracyText.SetActive(false);
         completeLevelUI.SetActive(true);
@@ -239,10 +242,14 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateAccuracy(bool hit)
     {
-        if (hit)
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((++ballHit / ++ballCount) * 100) + "%";
-        else
-            accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((ballHit / ++ballCount) * 100) + "%";
+        Debug.Log(waveSpawner.state);
+        if ((waveSpawner.state != WaveSpawner.SpawnState.COUNTING && waveSpawner.state != WaveSpawner.SpawnState.ENDING))
+        {
+            if (hit)
+                accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((++ballHit / ++ballCount) * 100) + "%";
+            else
+                accuracyText.GetComponent<TMP_Text>().text = "Accuracy: " + (int)((ballHit / ++ballCount) * 100) + "%";
+        }
     }
 
 
