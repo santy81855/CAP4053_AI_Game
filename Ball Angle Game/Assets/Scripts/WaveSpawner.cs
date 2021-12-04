@@ -108,17 +108,17 @@ public class WaveSpawner : MonoBehaviour
         {
             shopReminderText.SetActive(false);
             // fast fire powerup in wave 1
-            if (nextWave == 1 && ffFlag == 0)
-            {
-                Instantiate(fastFire, fastFireSpawn.position, fastFireSpawn.rotation);
-                ffFlag = 1;
-            }
-            // big ball powerup in wave 0
-            if (nextWave == 0 && bbFlag == 0)
-            {
-                Instantiate(bigBall, bigBallSpawn.position, bigBallSpawn.rotation);
-                bbFlag = 1;
-            }
+            // if (nextWave == 1 && ffFlag == 0)
+            // {
+            //     Instantiate(fastFire, fastFireSpawn.position, fastFireSpawn.rotation);
+            //     ffFlag = 1;
+            // }
+            // // big ball powerup in wave 0
+            // if (nextWave == 0 && bbFlag == 0)
+            // {
+            //     Instantiate(bigBall, bigBallSpawn.position, bigBallSpawn.rotation);
+            //     bbFlag = 1;
+            // }
             // if countdown reaches 0 and we are not spawning a wave then we spawn a wave
             if (state != SpawnState.SPAWNING)
             {
@@ -237,7 +237,7 @@ public class WaveSpawner : MonoBehaviour
                 SpawnEnemy(regularEnemy);
             // ex: if the number is between 50 and 75
             else if (number > (normalRate * 100) && (number <= (100 - (tankRate * 100))))
-                SpawnEnemy(speedEnemy);
+                SpawnEnemy(tankEnemy);
             // ex: if the number is between 75 and 100
             else if (number > (100 - (fastRate * 100)))
                 SpawnEnemy(speedEnemy);

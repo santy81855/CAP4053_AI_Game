@@ -7,7 +7,7 @@ public class CannonBall : MonoBehaviour
 {
     // Initialize variables
     [SerializeField] float despawnTime = 3f;
-    private float radius = 3f;
+    private float radius = 5f;
     private ShopManager shopManager;
     private GameManager gameManager;
     private bool hitEnemy = false;
@@ -17,9 +17,7 @@ public class CannonBall : MonoBehaviour
         // Reference the GameManager Singleton.
         gameManager = GameManager.Instance;
         shopManager = ShopManager.Instance;
-
     }
-
 
     // Detects if there is a collision with an object and sends
     // data to the correct place.
@@ -157,5 +155,11 @@ public class CannonBall : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (enemyInRange.GetComponent<StateManager>().isEnemyDead == false)
             enemyInRange.GetComponent<StateManager>().enabled = true;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
