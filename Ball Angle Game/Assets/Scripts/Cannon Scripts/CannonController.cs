@@ -15,6 +15,9 @@ public class CannonController : MonoBehaviour
     public float fireRate = 2f;
     public int powerMultiplier = 100;
     public float mouseSensitivity = 100.0f;
+    public Slider slider;
+    
+   
     
     
     private AudioSource fireSound;
@@ -27,6 +30,8 @@ public class CannonController : MonoBehaviour
 
     void Start()
     {
+        slider.value = PlayerPrefs.GetFloat("SaveSense", mouseSensitivity);
+
         // Instantiate objects
         fireSound = AudioManager.Instance.FireAudio;
         reloadLoader = GameManager.Instance.GetComponent<ReloadLoader>();
@@ -42,8 +47,11 @@ public class CannonController : MonoBehaviour
 
     void Update()
     {
+
         if (cannonLock == false)
         {
+
+            
             // Get input from mouse
             float mouseX = Input.GetAxis("Mouse X") * 20;
             float mouseY = -Input.GetAxis("Mouse Y") * 20;
@@ -87,8 +95,8 @@ public class CannonController : MonoBehaviour
 
     public void SetSensitvity(float sense)
     {
-        
         mouseSensitivity = sense;
+        PlayerPrefs.SetFloat("SaveSense", mouseSensitivity);
         Debug.Log(sense);
     }
 }
