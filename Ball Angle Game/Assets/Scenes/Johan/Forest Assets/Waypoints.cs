@@ -8,7 +8,7 @@ public class Waypoints : MonoBehaviour
     public GameObject[] waypoints;
     public GameObject player;
     int current = 0;
-    private float speed = 10;
+    private float speed = 2;
     float WPradius = 1;
 
     void Update()

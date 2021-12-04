@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/On Track/MainMenuLevel.unity
+    guid: bc113fd665cf0e2489a2ae9907acba0d
+  - enabled: 1
+    path: Assets/Scenes/On Track/LevelOne.unity
+    guid: 643d1119b73a3de49b8c894f1df2f959
   - enabled: 0
     path: Assets/Scenes/Joel/Menu Modified.unity
     guid: 7077621355d703f4895abcca356c5c41
@@ -23,6 +29,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UP TO DATE/ForestIndicator.unity
     guid: fd5d49b6dbf180542ac5f12eae5e0391
+  - enabled: 1
+    path: Assets/Scenes/Joel/DesertMusicTest.unity
+    guid: 4afaaef74d695054abf9da836b005eb6
   - enabled: 0
     path: Assets/Scenes/Johan/Menu combining/New Menu Copy.unity
     guid: 43755e01b9d30294fa9fa03664cd676f
