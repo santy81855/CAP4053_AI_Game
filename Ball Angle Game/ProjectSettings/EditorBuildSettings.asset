@@ -23,16 +23,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UP TO DATE/ForestIndicator.unity
     guid: fd5d49b6dbf180542ac5f12eae5e0391
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Johan/Menu combining/New Menu Copy.unity
     guid: 43755e01b9d30294fa9fa03664cd676f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Johan/Menu combining/Copy if Updated city.unity
     guid: 1c8f34fa90db58a479a5f0ca2265f664
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Johan/Menu combining/Updated forest.unity
     guid: f41950520614b0548a7960781e7cf142
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Johan/Menu combining/Desert Copy.unity
     guid: ed70b480712efec48908fa586b55268b
   m_configObjects: {}
