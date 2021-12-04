@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 4981723463376413934}
   - component: {fileID: 4652812085453058997}
   - component: {fileID: 4590130396868125787}
+  - component: {fileID: 8629918682227432943}
   m_Layer: 0
   m_Name: TankEnemyFinal
   m_TagString: Enemy
@@ -903,9 +904,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 2
-  FastZoneSpeedChange: 6
-  MediumZoneSpeedChange: 3
-  SlowZoneSpeedChange: 1
+  FastZoneSpeedChange: 1.8
+  MediumZoneSpeedChange: 1.2
+  SlowZoneSpeedChange: 0.9
+--- !u!114 &8629918682227432943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315332492711698415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ccb2ed13484c829e3cb5a286b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2343712858184735222
 GameObject:
   m_ObjectHideFlags: 0

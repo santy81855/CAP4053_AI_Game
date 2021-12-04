@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         float cameraFacing = Camera.main.transform.eulerAngles.y;
         // create the original vector holding the direction to move in
         Vector3 inputVector = new Vector3(x, 0, z);
-        
+
         // rotate the original vector relative to the direction faced by the camera
         Vector3 turnedInputVector = Quaternion.Euler(0, cameraFacing, 0) * inputVector;
         // move the cannon if it is within the boundaries of the circle
@@ -41,6 +41,12 @@ public class PlayerMovement : MonoBehaviour
             return -0.5f;
         else
             return 0f;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(circleCenter, radius);
     }
 
 }
