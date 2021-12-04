@@ -37,7 +37,6 @@ public class CannonController : MonoBehaviour
         reloadLoader = GameManager.Instance.GetComponent<ReloadLoader>();
 
         // Lock cursor and set up math
-        Cursor.lockState = CursorLockMode.Locked;
         firePower *= powerMultiplier;
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;

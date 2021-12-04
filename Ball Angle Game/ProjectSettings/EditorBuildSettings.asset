@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UP TO DATE/MenuBackup.unity
     guid: 509db93db80327345b1e557f369ceb91
+  - enabled: 1
+    path: Assets/Scenes/Joel/On Track (Joel)/MainMenuJoel.unity
+    guid: 77876629ad7bea1459ecebabc602befc
+  - enabled: 1
+    path: Assets/Scenes/Joel/On Track (Joel)/LevelOnePause.unity
+    guid: 4948ca9d03749e24495c062279555568
   - enabled: 0
     path: Assets/Scenes/UP TO DATE/prototype2.unity
     guid: 65a268aecde82cd4bbab81476cced0bf
