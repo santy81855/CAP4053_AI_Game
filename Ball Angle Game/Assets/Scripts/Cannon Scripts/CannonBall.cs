@@ -41,7 +41,7 @@ public class CannonBall : MonoBehaviour
                 hitEnemy = true;
 
                 // Instantiate colliders array with all objects around the ball
-                Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 10f);
 
                 // Loop through each object
                 foreach (Collider nearbyObject in colliders)
@@ -56,9 +56,9 @@ public class CannonBall : MonoBehaviour
                         if (dice == 1)
                         {
                             float distance = Vector3.Distance(enemyInRange.GetComponent<Transform>().position, transform.position);
-                            Vector3 dirToBall = enemyInRange.GetComponent<Transform>().position - transform.position;
-                            Vector3 newPos = enemyInRange.GetComponent<Transform>().position + dirToBall;
-                            StartCoroutine(EnemyFlee(newPos, enemyInRange));
+                            Vector3 dirToBall = (enemyInRange.GetComponent<Transform>().position - transform.position) * 4f;
+                            Vector3 newPos = (enemyInRange.GetComponent<Transform>().position + dirToBall);
+                            enemyInRange.GetComponent<Flee>().GetFlee(newPos);
                         }
                     }
                 }
@@ -148,14 +148,14 @@ public class CannonBall : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator EnemyFlee(Vector3 myvec, EnemyRagdoll enemyInRange)
-    {
-        enemyInRange.GetComponent<NavMeshAgent>().SetDestination(myvec);
-        enemyInRange.GetComponent<StateManager>().enabled = false;
-        yield return new WaitForSeconds(3);
-        if (enemyInRange.GetComponent<StateManager>().isEnemyDead == false)
-            enemyInRange.GetComponent<StateManager>().enabled = true;
-    }
+    // IEnumerator EnemyFlee(Vector3 myvec, EnemyRagdoll enemyInRange)
+    // {
+    //     enemyInRange.GetComponent<NavMeshAgent>().SetDestination(myvec);
+    //     enemyInRange.GetComponent<StateManager>().enabled = false;
+    //     yield return new WaitForSeconds(2);
+    //     if (enemyInRange.GetComponent<StateManager>().isEnemyDead == false)
+    //         enemyInRange.GetComponent<StateManager>().enabled = true;
+    // }
 
     void OnDrawGizmosSelected()
     {

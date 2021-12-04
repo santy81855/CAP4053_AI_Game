@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/On Track/MainMenuLevel.unity
+    guid: bc113fd665cf0e2489a2ae9907acba0d
+  - enabled: 1
+    path: Assets/Scenes/On Track/LevelOne.unity
+    guid: 643d1119b73a3de49b8c894f1df2f959
   - enabled: 0
     path: Assets/Scenes/Joel/Menu Modified.unity
     guid: 7077621355d703f4895abcca356c5c41
@@ -14,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Joel/PauseFix.unity
     guid: c287448d830fa334a88ae8b644bc16ae
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UP TO DATE/MenuBackup.unity
     guid: 509db93db80327345b1e557f369ceb91
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UP TO DATE/prototype2.unity
     guid: 65a268aecde82cd4bbab81476cced0bf
   - enabled: 1

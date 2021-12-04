@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 2874982411509572639}
   - component: {fileID: 7978478262643034352}
   - component: {fileID: 4049990565282570881}
+  - component: {fileID: 7610116875788979052}
   m_Layer: 0
   m_Name: FastEnemyFinal
   m_TagString: Enemy
@@ -745,6 +746,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 6
+  FastZoneSpeedChange: 1.6
+  MediumZoneSpeedChange: 1.4
+  SlowZoneSpeedChange: 0.9
+--- !u!114 &7610116875788979052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632494727058818261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16465ccb2ed13484c829e3cb5a286b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3632540326060332591
 GameObject:
   m_ObjectHideFlags: 0
