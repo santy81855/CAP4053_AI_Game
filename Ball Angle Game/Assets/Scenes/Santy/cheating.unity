@@ -1921,7 +1921,7 @@ Transform:
   - {fileID: 579567010}
   - {fileID: 528277945}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &54240167
 PrefabInstance:
@@ -14158,6 +14158,7 @@ MonoBehaviour:
   maxZ: 9
   minX: -10
   maxX: 100
+  spawner: {fileID: 0}
 --- !u!65 &571066475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22441,7 +22442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 391346375}
+  optionsMenuUI: {fileID: 0}
+  playerUI: {fileID: 0}
+  shopUI: {fileID: 0}
   disableCursor: {fileID: 1164754357197229430}
+  isEscapeSafe: 1
 --- !u!114 &831489894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41491,7 +41496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1668261140
 PrefabInstance:
@@ -52663,36 +52668,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120637236}
   m_Mesh: {fileID: 4300000, guid: 7e628f32de81f4b49a72746359f3dab3, type: 3}
---- !u!1 &2122769446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2122769447}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2122769447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122769446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.7, y: -0.7293968, z: 9.64}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2125477747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54327,6 +54302,7 @@ MonoBehaviour:
   fireRate: 2
   powerMultiplier: 100
   mouseSensitivity: 100
+  slider: {fileID: 0}
   cannonLock: 0
   xCameraBlock: 0
 --- !u!224 &2493749080468309496
@@ -56732,6 +56708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 5290260977716859372}
+  circleCenter: {x: -6.7, y: 2.66, z: -20.69}
+  radius: 30
   speed: 12
 --- !u!114 &5290260977716859283
 MonoBehaviour:

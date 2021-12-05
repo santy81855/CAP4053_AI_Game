@@ -11,12 +11,12 @@ public class ChestMovement : MonoBehaviour
     public float timer = 1f;
     public float timerSpeed = 0f;
     public float timeToMove = 0.5f;
-    public float minZ = -50.0f;
-    public float maxZ = 9.0f;
-    public float minX = -10.0f;
-    public float maxX = 100.0f;
-    // get the spawners
-    public GameObject spawner;
+    public float minZ;
+    public float maxZ;
+    public float minX;
+    public float maxX;
+    // to store temp vectors
+    private Vector3 temp;
 
     void Start()
     {
@@ -30,13 +30,15 @@ public class ChestMovement : MonoBehaviour
         /* get the accuracy */
         GameObject manager = GameObject.Find("GameManager");
         GameManager acc = manager.GetComponent<GameManager>();
+        
         float accuracy;
         // default to 50% if it is 0
         if (acc.ballHit == 0 || acc.ballCount == 0)
             accuracy = 0.5f;
         else
             accuracy = acc.ballHit / acc.ballCount;
-
+        float accuracy = 0.5f;
+        Debug.Log(accuracy);
         timer += Time.deltaTime * timerSpeed;
         if (timer >= timeToMove)
         {
@@ -48,15 +50,17 @@ public class ChestMovement : MonoBehaviour
                 if (accuracy >= 0.5f)
                 {
                     if (number < 25)
-                        desiredPos = GameObject.Find("Spawn1").transform.position;
+                        temp = GameObject.Find("Spawn1").transform.position;
                     else if (number < 50)
-                        desiredPos = GameObject.Find("Spawn2").transform.position;
+                        temp = GameObject.Find("Spawn2").transform.position;
                     else if (number < 75)
-                        desiredPos = GameObject.Find("Spawn3").transform.position;
+                        temp = GameObject.Find("Spawn3").transform.position;
                     else if (number < 100)
-                        desiredPos = GameObject.Find("Spawn4").transform.position;
+                        temp = GameObject.Find("Spawn4").transform.position;
                     else
-                        desiredPos = GameObject.Find("Spawn5").transform.position;
+                        temp = GameObject.Find("Spawn5").transform.position;
+                    // make the chest move towards the spawner but not quite to the spawner
+                    desiredPos = new Vector3(temp.x - 40, temp.y - 1.0f, temp.z - 40);
 
                     timer = 0.0f;
                 }
