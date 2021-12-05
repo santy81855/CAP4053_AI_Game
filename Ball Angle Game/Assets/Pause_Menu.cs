@@ -16,7 +16,7 @@ public class Pause_Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.hasExploded && isEscapeSafe == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.hasExploded && isEscapeSafe == true && !shopUI.activeSelf)
         {
             if (GameIsPaused)
             {
@@ -26,24 +26,21 @@ public class Pause_Menu : MonoBehaviour
             {
                 Pause();
             }
-            /*if (!GameIsPaused)
-            {
-                Pause();
-            }*/
             Debug.Log(GameIsPaused);
         }
     }
 
     public void Resume()
     {
-        disableCursor.SetActive(true);
-        Cursor.visible = (false);
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
         playerUI.SetActive(true);
         Time.timeScale = 1f;
+        disableCursor.SetActive(true);
         GameIsPaused = false;
+        Debug.Log(Cursor.visible);
     }
 
     void Pause()
@@ -52,7 +49,7 @@ public class Pause_Menu : MonoBehaviour
         playerUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        Cursor.visible = (true);
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         disableCursor.SetActive(false);
         GameIsPaused = true;
