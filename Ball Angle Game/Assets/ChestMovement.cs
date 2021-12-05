@@ -60,13 +60,13 @@ public class ChestMovement : MonoBehaviour
                         temp = GameObject.Find("Spawn5").transform.position;
                     // make the chest move towards the spawner but not quite to the spawner
                     if (temp.x > 0 && temp.z > 0)
-                        desiredPos = new Vector3(temp.x - 40, temp.y - 1.0f, temp.z - 40);
+                        desiredPos = new Vector3(temp.x - 40, transform.position.y, temp.z - 40);
                     else if (temp.x > 0 && temp.z < 0)
-                        desiredPos = new Vector3(temp.x - 40, temp.y - 1.0f, temp.z + 40);
+                        desiredPos = new Vector3(temp.x - 40, transform.position.y, temp.z + 40);
                     else if (temp.x < 0 && temp.z > 0)
-                        desiredPos = new Vector3(temp.x + 40, temp.y - 1.0f, temp.z - 40);
+                        desiredPos = new Vector3(temp.x + 40, transform.position.y, temp.z - 40);
                     else
-                        desiredPos = new Vector3(temp.x + 40, temp.y - 1.0f, temp.z + 40);
+                        desiredPos = new Vector3(temp.x + 40, transform.position.y, temp.z + 40);
                     timer = 0.0f;
                 }
                 else
