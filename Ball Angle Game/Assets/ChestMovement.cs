@@ -11,10 +11,10 @@ public class ChestMovement : MonoBehaviour
     public float timer = 1f;
     public float timerSpeed = 0f;
     public float timeToMove = 0.5f;
-    public float minZ;
-    public float maxZ;
-    public float minX;
-    public float maxX;
+    public float minZ = -70.0f;
+    public float maxZ = 40.0f;
+    public float minX = -50.0f;
+    public float maxX = 50.0f;
     // to store temp vectors
     private Vector3 temp;
 
@@ -37,13 +37,12 @@ public class ChestMovement : MonoBehaviour
             accuracy = 0.5f;
         else
             accuracy = acc.ballHit / acc.ballCount;
-        float accuracy = 0.5f;
         Debug.Log(accuracy);
-        timer += Time.deltaTime * timerSpeed;
+        timer += Time.deltaTime;
         if (timer >= timeToMove)
         {
             transform.position = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime * speed);
-            if (Vector3.Distance(transform.position, desiredPos) <= 10f)
+            if (Vector3.Distance(transform.position, desiredPos) <= 10f || Mathf.Abs(transform.position.x - desiredPos.x) <= 10f || Mathf.Abs(transform.position.z - desiredPos.z) <= 10f)
             {
                 // get random number
                 int number = Random.Range(1, 125);
