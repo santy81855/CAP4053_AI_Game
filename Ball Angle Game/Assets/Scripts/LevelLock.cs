@@ -8,7 +8,8 @@ public class LevelLock : MonoBehaviour
     public static LevelLock Instance { get { return instance; } }
 
     public GameObject warning;
-
+    public GameObject congrats;
+    public GameObject mainMenu;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -25,6 +26,7 @@ public class LevelLock : MonoBehaviour
     void Start()
     {
         LoadPref();
+        CheckCongrats();
     }
 
     // Update is called once per frame
@@ -71,6 +73,14 @@ public class LevelLock : MonoBehaviour
 
     }
 
+    public void CheckCongrats()
+    {
+        if (PlayerPrefs.GetInt("level2") == 1 && PlayerPrefs.GetInt("level3") == 1)
+        {
+            congrats.SetActive(true);
+            mainMenu.SetActive(false);
+        }
+    }
     IEnumerator DisplayWarning()
     {
         warning.SetActive(true);

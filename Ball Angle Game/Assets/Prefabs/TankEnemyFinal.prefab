@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetState: {fileID: 3233830219246588749}
   stateManagerRef: {fileID: 3233830219228717389}
-  maxNumber: 3
+  maxNumber: 250
 --- !u!1 &3233830218051400002
 GameObject:
   m_ObjectHideFlags: 0

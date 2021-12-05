@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public CannonController cannon;
     public GameObject shopUI;
     public GameObject gameplayUI;
+    public GameObject settingsOpen;
+    public GameObject menuOpen;
 
     public enum PowerState { REGULAR, BLAST, FREEZE };
     public PowerState state = PowerState.REGULAR;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject completeLevelUI;
     public GameObject lostLevelUI;
+    public Pause_Menu pauseMenu;
     private WaveSpawner waveSpawner;
     public float ballCount = 0;
     public float ballHit = 0;
@@ -104,7 +107,7 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             cannon.cannonLock = false;
         }
-        else if (Input.GetKeyDown(KeyCode.B) && !shopUI.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.B) && !shopUI.activeSelf && !menuOpen.activeSelf && !settingsOpen.activeSelf)
         {
             Debug.Log("Entering Shop");
             shopUI.SetActive(true);
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
     }
     public void CompleteLevel()
     {
-
+        pauseMenu.isEscapeSafe = false;
         Debug.Log("LEVEL WON!");
         LevelLock.Instance.Win(currentLevel);
         waveText.SetActive(false);
@@ -157,6 +160,7 @@ public class GameManager : MonoBehaviour
 
     public void LostLevel()
     {
+        pauseMenu.isEscapeSafe = false;
         // start a coroutine so that we can wait a couple of seconds before the level lost UI pops up
         StartCoroutine(waiter());
     }

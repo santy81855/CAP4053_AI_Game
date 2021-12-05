@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class UpdateAudio : MonoBehaviour
+public class MenuSiderUpdate : MonoBehaviour
 {
     [SerializeField] AudioMixer _mixer;
 
-    [SerializeField] CannonController cannon;
+    [SerializeField] CannonInMenu cannon;
 
     // Start is called before the first frame update
     void Start()
     {
         if (!PlayerPrefs.HasKey("sound") || !PlayerPrefs.HasKey("music") || !PlayerPrefs.HasKey("SaveSense"))
         {
-            PlayerPrefs.SetFloat("sound", 1f);
-            _mixer.SetFloat("sound", 1f);
-            PlayerPrefs.SetFloat("music", 1f);
-            _mixer.SetFloat("music", 1f);
+            PlayerPrefs.SetFloat("sound", 50f);
+            _mixer.SetFloat("sound", 50f);
+            PlayerPrefs.SetFloat("music", 50f);
+            _mixer.SetFloat("music", 50f);
             PlayerPrefs.SetFloat("SaveSense", 50f);
             cannon.SetSensitvity(50f);
         }
@@ -32,7 +32,4 @@ public class UpdateAudio : MonoBehaviour
         }
 
     }
-
-
-
 }

@@ -7,13 +7,16 @@ public class Pause_Menu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-
+    public GameObject optionsMenuUI;
+    public GameObject playerUI;
+    public GameObject shopUI;
     public GameObject disableCursor;
+    public bool isEscapeSafe = true;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.hasExploded)
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.hasExploded && isEscapeSafe == true)
         {
             if (GameIsPaused)
             {
@@ -37,12 +40,16 @@ public class Pause_Menu : MonoBehaviour
         Cursor.visible = (false);
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+        playerUI.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     void Pause()
     {
+        shopUI.SetActive(false);
+        playerUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         Cursor.visible = (true);

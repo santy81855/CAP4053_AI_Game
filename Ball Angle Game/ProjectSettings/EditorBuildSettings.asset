@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/On Track/KyleMerge/JohanMenu.unity
+    path: Assets/Scenes/On Track/KyleMerge/Prototype3/JohanMenu.unity
     guid: 40b5ec81133c1064b9f96a2dab735739
   - enabled: 1
-    path: Assets/Scenes/On Track/KyleMerge/KyleLevelOne.unity
+    path: Assets/Scenes/On Track/KyleMerge/Prototype3/KyleLevelOne.unity
     guid: 9502855c653184045bf37cfee626a139
   - enabled: 1
+    path: Assets/Scenes/On Track/KyleMerge/Prototype3/Level2Prototype3.unity
+    guid: c001f6187e2483042b5dda5b90eb59cb
+  - enabled: 1
+    path: Assets/Scenes/On Track/KyleMerge/Prototype3/Level3Prototype3.unity
+    guid: b340a2ff319d6e54c9ed326eb18e5770
+  - enabled: 0
     path: Assets/Scenes/On Track/KyleMerge/KyleLevelTwo.unity
     guid: e62d8d5d34b4a76458639ca4b698293d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/On Track/KyleMerge/KyleLevelThree.unity
     guid: 4c5a65a2bbee2554b81bead8ccb7d890
   - enabled: 0
