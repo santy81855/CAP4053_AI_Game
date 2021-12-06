@@ -62405,7 +62405,7 @@ MonoBehaviour:
   mouseSensitivity: 30
   slider: {fileID: 1367992987}
   cannonLock: 0
-  xCameraBlock: 0
+  xCameraBlock: 1
 --- !u!23 &2852510171889943619
 MeshRenderer:
   m_ObjectHideFlags: 0
