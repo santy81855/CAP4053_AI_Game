@@ -7990,7 +7990,7 @@ MonoBehaviour:
   whatIsObj:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 5
+  attackRange: 3
 --- !u!1 &8821617299333821663
 GameObject:
   m_ObjectHideFlags: 0

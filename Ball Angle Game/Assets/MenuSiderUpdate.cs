@@ -14,10 +14,10 @@ public class MenuSiderUpdate : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("sound") || !PlayerPrefs.HasKey("music") || !PlayerPrefs.HasKey("SaveSense"))
         {
-            PlayerPrefs.SetFloat("sound", 50f);
-            _mixer.SetFloat("sound", 50f);
-            PlayerPrefs.SetFloat("music", 50f);
-            _mixer.SetFloat("music", 50f);
+            PlayerPrefs.SetFloat("sound", 0.5f);
+            _mixer.SetFloat("sound", Mathf.Log10(0.5f) * 30f);
+            PlayerPrefs.SetFloat("music", 0.5f);
+            _mixer.SetFloat("music", Mathf.Log10(0.5f) * 30f);
             PlayerPrefs.SetFloat("SaveSense", 50f);
             cannon.SetSensitvity(50f);
         }

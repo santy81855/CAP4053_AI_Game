@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.hasExploded == true)
+            controller.enabled = false;
         // get input for movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

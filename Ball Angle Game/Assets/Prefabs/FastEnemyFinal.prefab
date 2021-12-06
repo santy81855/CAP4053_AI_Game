@@ -1619,7 +1619,7 @@ MonoBehaviour:
   whatIsObj:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 5
+  attackRange: 3
 --- !u!1 &3633734376042496679
 GameObject:
   m_ObjectHideFlags: 0
