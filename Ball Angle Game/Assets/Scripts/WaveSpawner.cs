@@ -205,9 +205,9 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spawning the number below");
         Debug.Log(enemyCount);
 
-        // we will assume that we want a normal enemy to appear 70% of the time and the hard
-        // enemies to each appear 15% of the time if you have an accuracy of 50%.
-        float normalEnemyConstant = 0.714f; // we get this by dividing 50/70
+        // we will assume that we want a normal enemy to appear 82% of the time and the hard
+        // enemies to each appear 9% of the time if you have an accuracy of 50%.
+        float normalEnemyConstant = 0.6098f; // we get this by dividing 50/82
         // since we want to spawn less normal enemies and more harder enemies when the person is
         // doing well we can just multiply it by 2 * accuracy, since it will keep the number
         // constant for an accuracy of 50% and will make the spawnrate of normal enemies lower for
