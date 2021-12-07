@@ -11,7 +11,7 @@ public class Target : State
 
     // Create other checking variables
     public LayerMask whatIsObj;
-    public float attackRange;
+    private float attackRange = 1.0f;
 
     public override State RunCurrentState(Transform target, NavMeshAgent agent, Camera fpsCam, Transform myEnemy)
     {
