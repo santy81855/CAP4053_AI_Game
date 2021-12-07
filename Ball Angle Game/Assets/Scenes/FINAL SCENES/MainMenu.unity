@@ -6412,7 +6412,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 2.371, z: 0}
+  m_Center: {x: 0, y: 1.8, z: 0}
   m_TimeToStationary: 0.5
 --- !u!65 &211913904
 BoxCollider:
@@ -23741,7 +23741,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 2.0270002, z: 0}
+  m_Center: {x: 0, y: 1.6, z: 0}
   m_TimeToStationary: 0.5
 --- !u!65 &824276810
 BoxCollider:
@@ -32614,7 +32614,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 2.0270002, z: 0}
+  m_Center: {x: 0, y: 1.7, z: 0}
   m_TimeToStationary: 0.5
 --- !u!65 &1184322350
 BoxCollider:
@@ -32689,7 +32689,8 @@ MonoBehaviour:
   m_text: Thank you for keeping the peace by defending the video games. This the
     FINAL LEVEL. You have unlocked MOVEMENT. Use "WASD" to move the cannon around.
     Unfortunately, the treasure chest has decided to move too! Protect it while it
-    wanders around!
+    wanders around! Please be careful, if you touch any enemies you will SHATTER
+    and lose the level.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fce70d7475460fd46ae1421317667dcb, type: 2}
   m_sharedMaterial: {fileID: 1308179501156039813, guid: fce70d7475460fd46ae1421317667dcb,
