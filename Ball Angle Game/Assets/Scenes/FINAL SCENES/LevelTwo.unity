@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 9595d7e2ce9a4ee418c001cabd6767b2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8283c2e29a188e94886f568d89423d27, type: 2}
 --- !u!1 &61621987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[3].count
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
@@ -2027,7 +2027,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[4].count
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}

@@ -2113,7 +2113,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[3].count
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
@@ -2124,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[4].count
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
@@ -6388,7 +6388,7 @@ MonoBehaviour:
   timerSpeed: 0
   timeToMove: 0.5
   minZ: -70
-  maxZ: 35
+  maxZ: 20
   minX: -55
   maxX: 55
 --- !u!1 &955908994
@@ -6459,7 +6459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955904934}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.2, y: 0.899, z: -20.6}
+  m_LocalPosition: {x: 3.7, y: 0.899, z: -20.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 956121560}
