@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 6
-  FastZoneSpeedChange: 1.4
+  FastZoneSpeedChange: 1.6
   MediumZoneSpeedChange: 1.2
   SlowZoneSpeedChange: 0.9
 --- !u!114 &7610116875788979052
@@ -1619,7 +1619,6 @@ MonoBehaviour:
   whatIsObj:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 3
 --- !u!1 &3633734376042496679
 GameObject:
   m_ObjectHideFlags: 0

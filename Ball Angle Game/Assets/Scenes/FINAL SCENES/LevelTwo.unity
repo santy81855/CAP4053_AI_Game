@@ -2005,7 +2005,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[2].count
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
@@ -2016,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[3].count
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
@@ -2027,7 +2027,7 @@ PrefabInstance:
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}
       propertyPath: waves.Array.data[4].count
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6335889492121556915, guid: 21b7fa4448e7ade41a5e158baa3c3997,
         type: 3}

@@ -41,6 +41,8 @@ public class LevelLock : MonoBehaviour
             PlayerPrefs.SetInt("level2", 1);
         else if (level == 2)
             PlayerPrefs.SetInt("level3", 1);
+        else if (level == 3)
+            PlayerPrefs.SetInt("win", 1);
     }
 
     public void LoadPref()
@@ -49,6 +51,7 @@ public class LevelLock : MonoBehaviour
         {
             PlayerPrefs.SetInt("level2", 0);
             PlayerPrefs.SetInt("level3", 0);
+            PlayerPrefs.SetInt("win", 0);
         }
     }
 
@@ -62,6 +65,7 @@ public class LevelLock : MonoBehaviour
     {
         PlayerPrefs.SetInt("level2", 0);
         PlayerPrefs.SetInt("level3", 0);
+        PlayerPrefs.SetInt("win", 0);
     }
 
     public void EnterLevelTwo()
@@ -75,7 +79,7 @@ public class LevelLock : MonoBehaviour
 
     public void CheckCongrats()
     {
-        if (PlayerPrefs.GetInt("level2") == 1 && PlayerPrefs.GetInt("level3") == 1)
+        if (PlayerPrefs.GetInt("level2") == 1 && PlayerPrefs.GetInt("level3") == 1 && PlayerPrefs.GetInt("win") == 1)
         {
             congrats.SetActive(true);
             mainMenu.SetActive(false);

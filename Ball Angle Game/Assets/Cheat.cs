@@ -25,6 +25,7 @@ public class Cheat : MonoBehaviour
     {
         PlayerPrefs.SetInt("level2", 1);
         PlayerPrefs.SetInt("level3", 1);
+        PlayerPrefs.SetInt("win", 1);
         congrats.SetActive(true);
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
@@ -36,11 +37,14 @@ public class Cheat : MonoBehaviour
     {
         PlayerPrefs.SetInt("level2", 0);
         PlayerPrefs.SetInt("level3", 0);
+        PlayerPrefs.SetInt("win", 0);
+
     }
 
     public void CheckCheat()
     {
         Debug.Log(PlayerPrefs.GetInt("level2"));
         Debug.Log(PlayerPrefs.GetInt("level3"));
+        Debug.Log(PlayerPrefs.GetInt("win"));
     }
 }
