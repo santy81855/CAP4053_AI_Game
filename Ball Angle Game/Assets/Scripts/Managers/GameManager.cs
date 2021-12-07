@@ -161,6 +161,9 @@ public class GameManager : MonoBehaviour
     public void LostLevel()
     {
         pauseMenu.isEscapeSafe = false;
+        hasExploded = true;
+        SpawnFracturedObject();
+        loseAudio.Play();
         // start a coroutine so that we can wait a couple of seconds before the level lost UI pops up
         StartCoroutine(waiter());
     }
@@ -169,11 +172,8 @@ public class GameManager : MonoBehaviour
     IEnumerator waiter()
     {
         yield return new WaitForSecondsRealtime(1);
-        if (!hasExploded)
+        if (hasExploded)
         {
-            hasExploded = true;
-            SpawnFracturedObject();
-            loseAudio.Play();
             yield return new WaitForSecondsRealtime(1);
             Debug.Log("LEVEL LOST! TRY AGAIN!");
             lostLevelUI.SetActive(true);
